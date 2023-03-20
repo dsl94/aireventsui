@@ -12,11 +12,18 @@ import { HeaderComponent } from './components/header/header.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { NavHeaderComponent } from './components/nav-header/nav-header.component';
 import { ChatBoxComponent } from './components/chat-box/chat-box.component';
+import { FlightStatsCardComponent } from './components/flight-stats-card/flight-stats-card.component';
+import { PirepComponent } from './pages/pirep/pirep.component';
+import { PageTitleComponent } from './components/page-title/page-title.component';
 
 const routes: Routes = [
   // osnovne rute
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: IndexComponent },
+  { path: 'home', component: IndexComponent, children:
+      [
+        {path: 'pirep', component: PirepComponent}
+      ]
+  }
 ]
 
 @NgModule({
@@ -27,7 +34,10 @@ const routes: Routes = [
     HeaderComponent,
     SidebarComponent,
     NavHeaderComponent,
-    ChatBoxComponent
+    ChatBoxComponent,
+    FlightStatsCardComponent,
+    PirepComponent,
+    PageTitleComponent
   ],
   imports: [
     BrowserModule,
