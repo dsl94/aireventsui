@@ -8,7 +8,7 @@ import { MainComponent } from './components/main/main.component';
 import { IndexComponent } from './pages/index/index.component';
 import {RouterModule, Routes} from "@angular/router";
 import {FormsModule} from "@angular/forms";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { HeaderComponent } from './components/header/header.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { NavHeaderComponent } from './components/nav-header/nav-header.component';
@@ -20,12 +20,22 @@ import { RegisterComponent } from './pages/register/register.component';
 import { MandatoryStarComponent } from './components/mandatory-star/mandatory-star.component';
 import {ToastrModule} from "ngx-toastr";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { LogoComponent } from './components/logo/logo.component';
+import { LoginComponent } from './pages/login/login.component';
+import {AuthGuard} from "./helpers/auth.guard";
+import {AuthInterceptor} from "./helpers/auth.interceptor";
 
 const routes: Routes = [
   // osnovne rute
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'register', component: RegisterComponent },
-  { path: 'home', component: IndexComponent, children:
+  { path: 'login', component: LoginComponent },
+  {
+    path: 'home',
+    component: IndexComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['ROLE_USER', 'ROLE_ADMIN'] },
+    children:
       [
         {path: 'pirep', component: PirepComponent}
       ]
@@ -45,18 +55,22 @@ const routes: Routes = [
     PirepComponent,
     PageTitleComponent,
     RegisterComponent,
-    MandatoryStarComponent
+    MandatoryStarComponent,
+    LogoComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
     ToastrModule.forRoot(),
-    BrowserAnimationsModule,
     RouterModule.forRoot(routes),
   ],
-  providers: [{ provide: 'BASE_API_URL', useValue: environment.apiUrl },],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    {provide: 'BASE_API_URL', useValue: environment.apiUrl },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

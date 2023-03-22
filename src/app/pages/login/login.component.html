@@ -10,17 +10,8 @@
                 <div class="text-center mb-3">
                   <app-logo></app-logo>
                 </div>
-                <h4 class="text-center mb-4">Sing up</h4>
+                <h4 class="text-center mb-4">Sign in</h4>
                 <form class="user" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
-                  <div class="mb-3">
-                    <label class="mb-1"><strong>Full name <app-ms></app-ms></strong></label>
-                    <input type="text" class="form-control" name="fullName"
-                           [(ngModel)]="form.fullName" required #fullName="ngModel">
-                    <div class="alert alert-danger" role="alert"
-                         *ngIf="fullName.errors && f.submitted">
-                      Full name is required!
-                    </div>
-                  </div>
                   <div class="mb-3">
                     <label class="mb-1"><strong>Email <app-ms></app-ms></strong></label>
                     <input type="email" class="form-control" name="email"
@@ -39,27 +30,12 @@
                       Password is required!
                     </div>
                   </div>
-                  <div class="mb-3">
-                    <label class="mb-1"><strong>Vatsim Id</strong></label>
-                    <input type="text" class="form-control" name="vatsimId"
-                           [(ngModel)]="form.vatsimId"  #vatsimId="ngModel">
-                  </div>
-                  <div class="mb-3">
-                    <label class="mb-1"><strong>IVAO Id</strong></label>
-                    <input type="text" class="form-control" name="ivaoId"
-                           [(ngModel)]="form.ivaoId" #ivaoId="ngModel">
-                  </div>
-                  <div class="mb-3">
-                    <label class="mb-1"><strong>PSOCON Id</strong></label>
-                    <input type="text" class="form-control" name="posconId"
-                           [(ngModel)]="form.posconId"  #posconId="ngModel">
-                  </div>
                   <div class="text-center">
-                    <button type="submit" class="btn btn-primary btn-block">Sign up</button>
+                    <button type="submit" class="btn btn-primary btn-block">Sign in</button>
                   </div>
                 </form>
                 <div class="new-account mt-3">
-                  <p>Already have an account? <a class="text-primary" routerLink="/login">Sign in</a></p>
+                  <p>Don't have an account? <a class="text-primary" routerLink="/register">Sign up</a></p>
                 </div>
               </div>
             </div>
