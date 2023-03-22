@@ -27,6 +27,7 @@
             "styles": [
               "src/assets/vendor/jquery-nice-select/css/nice-select.css",
               "src/assets/css/style.css",
+              "node_modules/ngx-toastr/toastr.css",
               "src/styles.css"
             ],
             "scripts": [

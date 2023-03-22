@@ -1,0 +1,81 @@
+<body class="vh-100">
+<div class="authincation h-100">
+  <div class="container h-100">
+    <div class="row justify-content-center h-100 align-items-center">
+      <div class="col-md-6">
+        <div class="authincation-content">
+          <div class="row no-gutters">
+            <div class="col-xl-12">
+              <div class="auth-form">
+                <div class="text-center mb-3">
+                  <a href="index.html" class="brand-logo">
+                    <svg class="logo-abbr" xmlns="http://www.w3.org/2000/svg" width="62.074" height="65.771" viewBox="0 0 62.074 65.771">
+                      <g id="svg_2">
+                        <rect y="3" x="1.074" fill="#f73a0b" rx="30" height="60" width="60" data-name="Rectangle 1" id="Rectangle_1" class="rect-primary-rect"/>
+                        <path id="svg_1" fill="white" d="m55.69549,28.28748a2.30777,2.95699 0 0 0 -0.21771,-2.12011a10.7333,13.75282 0 0 0 -14.69569,-5.02131l-4.68085,3.45913l-10.8857,-6.5556a2.17714,2.78962 0 0 0 -2.00297,0l-6.53142,4.82604a2.17714,2.78962 0 0 0 -1.08857,2.34328a2.17714,2.78962 0 0 0 1.00148,2.42697l7.18456,5.8024l-3.78822,2.78962l-10.40673,1.61798a2.17714,2.78962 0 0 0 -1.15388,4.88183l7.70707,8.53623a6.53142,8.36885 0 0 0 7.72884,1.22743l30.74121,-22.51222a2.17714,2.78962 0 0 0 1.08857,-1.70167zm-33.81097,19.52732a2.17714,2.78962 0 0 1 -2.61257,-0.50213l-4.13656,-4.54708l5.94359,-0.92057a2.17714,2.78962 0 0 0 0.82731,-0.36265l7.31519,-5.38396a2.17714,2.78962 0 0 0 1.08857,-2.37118a2.17714,2.78962 0 0 0 -1.02326,-2.39907l-7.18456,-5.8303l2.39485,-1.75746l10.8857,6.47191a2.17714,2.78962 0 0 0 2.00297,0l5.57348,-4.12863a6.53142,8.36885 0 0 1 7.31519,0.80899l-28.3899,20.92213z"/>
+                      </g>
+                    </svg>
+                    <h5 style="padding-top: 2px; padding-left: 10px">AirEvents</h5>
+
+                  </a>
+                </div>
+                <h4 class="text-center mb-4">Sing up</h4>
+                <form class="user" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+                  <div class="mb-3">
+                    <label class="mb-1"><strong>Full name <app-ms></app-ms></strong></label>
+                    <input type="text" class="form-control" name="fullName"
+                           [(ngModel)]="form.fullName" required #fullName="ngModel">
+                    <div class="alert alert-danger" role="alert"
+                         *ngIf="fullName.errors && f.submitted">
+                      Full name is required!
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label class="mb-1"><strong>Email <app-ms></app-ms></strong></label>
+                    <input type="email" class="form-control" name="email"
+                           [(ngModel)]="form.email" required #email="ngModel">
+                    <div class="alert alert-danger" role="alert"
+                         *ngIf="email.errors && f.submitted">
+                      Email is required!
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label class="mb-1"><strong>Password <app-ms></app-ms></strong></label>
+                    <input type="password" class="form-control" name="password"
+                           [(ngModel)]="form.password" required #password="ngModel">
+                    <div class="alert alert-danger" role="alert"
+                         *ngIf="password.errors && f.submitted">
+                      Password is required!
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label class="mb-1"><strong>Vatsim Id</strong></label>
+                    <input type="text" class="form-control" name="vatsimId"
+                           [(ngModel)]="form.vatsimId"  #vatsimId="ngModel">
+                  </div>
+                  <div class="mb-3">
+                    <label class="mb-1"><strong>IVAO Id</strong></label>
+                    <input type="text" class="form-control" name="ivaoId"
+                           [(ngModel)]="form.ivaoId" #ivaoId="ngModel">
+                  </div>
+                  <div class="mb-3">
+                    <label class="mb-1"><strong>PSOCON Id</strong></label>
+                    <input type="text" class="form-control" name="posconId"
+                           [(ngModel)]="form.posconId"  #posconId="ngModel">
+                  </div>
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-primary btn-block">Sign up</button>
+                  </div>
+                </form>
+                <div class="new-account mt-3">
+                  <p>Already have an account? <a class="text-primary" href="page-register.html">Sign in</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
