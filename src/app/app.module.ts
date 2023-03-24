@@ -33,8 +33,6 @@ const routes: Routes = [
   {
     path: 'home',
     component: IndexComponent,
-    canActivate: [AuthGuard],
-    data: { roles: ['ROLE_USER', 'ROLE_ADMIN'] },
     children:
       [
         {path: 'pirep', component: PirepComponent}
