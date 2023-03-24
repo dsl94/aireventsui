@@ -42,9 +42,8 @@ export class LoginComponent implements OnInit{
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.tokenService.getUser().roles;
-        this.toastr.success("Welcome");
         if(this.roles.includes('ROLE_USER')) {
-          this.router.navigateByUrl('/home');
+          this.redirect();
         } else if (this.roles.includes('ROLE_ADMIN')) {
           this.router.navigate(['/admin/dashboard']);
         }
@@ -53,5 +52,13 @@ export class LoginComponent implements OnInit{
         this.toastr.error("Bad credentials");
       }
     );
+  }
+
+   redirect() {
+     var a =document.createElement("a")
+
+     a.href="/home"
+
+     a.click()
   }
 }
