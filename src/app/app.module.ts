@@ -24,6 +24,7 @@ import { LogoComponent } from './components/logo/logo.component';
 import { LoginComponent } from './pages/login/login.component';
 import {AuthGuard} from "./helpers/auth.guard";
 import {AuthInterceptor} from "./helpers/auth.interceptor";
+import { LogoutButtonComponent } from './components/logout-button/logout-button.component';
 
 const routes: Routes = [
   // osnovne rute
@@ -57,7 +58,8 @@ const routes: Routes = [
     RegisterComponent,
     MandatoryStarComponent,
     LogoComponent,
-    LoginComponent
+    LoginComponent,
+    LogoutButtonComponent
   ],
   imports: [
     BrowserModule,

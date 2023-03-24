@@ -28,6 +28,11 @@ export class LoginComponent implements OnInit{
     if (this.tokenService.getToken()) {
       this.isLoggedIn = true;
       this.roles = this.tokenService.getUser().roles;
+      if(this.roles.includes('ROLE_USER')) {
+        this.redirect();
+      } else if (this.roles.includes('ROLE_ADMIN')) {
+        this.router.navigate(['/admin/dashboard']);
+      }
     }
   }
 
