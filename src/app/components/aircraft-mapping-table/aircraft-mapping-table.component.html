@@ -1,0 +1,33 @@
+<div class="card">
+  <div class="card-header">
+    <button type="button" data-bs-toggle="modal" data-bs-target="#create-mapping-modal" class="btn btn-primary"><span><i class="fas fa-plus-circle"></i></span> Add Mapping</button>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table header-border table-responsive-sm">
+        <thead>
+        <tr>
+          <th>Sim key</th>
+          <th>Aircraft Icao</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let mapping of mappings">
+          <td>
+            {{mapping.simKey}}
+          </td>
+          <td>
+            {{mapping.icao}}
+          </td>
+          <td>
+            <a href="#" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-pencil-alt"></i></a>
+            <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<app-aircraft-mapping-modal (createdEvent)="load()"></app-aircraft-mapping-modal>

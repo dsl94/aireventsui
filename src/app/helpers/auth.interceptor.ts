@@ -16,7 +16,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
   private handleAuthError(err: HttpErrorResponse, url: string): Observable<any> {
     //handle your auth error or rethrow
-    if (!url.includes('signin')) {
+    if (!url.includes('login')) {
       if (err.status === 401 || err.status === 403) {
         //navigate /delete cookies or whatever
         this.toastr.error("Your token has expired, please login again");
@@ -32,7 +32,7 @@ export class AuthInterceptor implements HttpInterceptor {
     let authReq = req;
     const token = this.token.getToken();
     if (token != null) {
-      authReq = req.clone({ headers: req.headers.set(TOKEN_HEADER_KEY, 'Bearer ' + token) });
+      authReq = req.clone({ headers: req.headers.set(TOKEN_HEADER_KEY, token) });
     }
     return next.handle(authReq).pipe(catchError(x=> this.handleAuthError(x, req.url)));
   }

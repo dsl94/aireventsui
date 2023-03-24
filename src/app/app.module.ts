@@ -25,6 +25,9 @@ import { LoginComponent } from './pages/login/login.component';
 import {AuthGuard} from "./helpers/auth.guard";
 import {AuthInterceptor} from "./helpers/auth.interceptor";
 import { LogoutButtonComponent } from './components/logout-button/logout-button.component';
+import { AircraftMappingComponent } from './pages/aircraft-mapping/aircraft-mapping.component';
+import { AircraftMappingTableComponent } from './components/aircraft-mapping-table/aircraft-mapping-table.component';
+import { AircraftMappingModalComponent } from './components/aircraft-mapping-modal/aircraft-mapping-modal.component';
 
 const routes: Routes = [
   // osnovne rute
@@ -35,10 +38,11 @@ const routes: Routes = [
     path: 'home',
     component: IndexComponent,
     canActivate: [AuthGuard],
-    data: { roles: ['ROLE_USER', 'ROLE_ADMIN'] },
+    data: { roles: ['ROLE_USER', 'ROLE_ADMIN', 'ROLE_SYSTEM_ADMIN'] },
     children:
       [
-        {path: 'pirep', component: PirepComponent}
+        {path: 'pirep', component: PirepComponent},
+        { path: 'aircraft-mapping', component: AircraftMappingComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SYSTEM_ADMIN']}},
       ]
   }
 ]
@@ -59,7 +63,10 @@ const routes: Routes = [
     MandatoryStarComponent,
     LogoComponent,
     LoginComponent,
-    LogoutButtonComponent
+    LogoutButtonComponent,
+    AircraftMappingComponent,
+    AircraftMappingTableComponent,
+    AircraftMappingModalComponent
   ],
   imports: [
     BrowserModule,
