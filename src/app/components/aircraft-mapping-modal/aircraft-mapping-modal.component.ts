@@ -22,6 +22,7 @@ export class AircraftMappingModalComponent {
     this.mappingService.createMapping(simKey, icao).subscribe(
       data => {
           this.createdEvent.emit();
+        this.toastr.success("Mapping added");
           // @ts-ignore
         document.getElementById('closeMappingModal').click();
       },
