@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {AircraftMappingService} from "../../services/aircraft-mapping.service";
 import {ToastrService} from "ngx-toastr";
 

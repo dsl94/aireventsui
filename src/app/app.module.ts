@@ -28,6 +28,7 @@ import { LogoutButtonComponent } from './components/logout-button/logout-button.
 import { AircraftMappingComponent } from './pages/aircraft-mapping/aircraft-mapping.component';
 import { AircraftMappingTableComponent } from './components/aircraft-mapping-table/aircraft-mapping-table.component';
 import { AircraftMappingModalComponent } from './components/aircraft-mapping-modal/aircraft-mapping-modal.component';
+import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
 
 const routes: Routes = [
   // osnovne rute
@@ -66,7 +67,8 @@ const routes: Routes = [
     LogoutButtonComponent,
     AircraftMappingComponent,
     AircraftMappingTableComponent,
-    AircraftMappingModalComponent
+    AircraftMappingModalComponent,
+    ConfirmModalComponent
   ],
   imports: [
     BrowserModule,

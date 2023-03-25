@@ -22,7 +22,7 @@
           </td>
           <td>
             <a href="#" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-pencil-alt"></i></a>
-            <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
+            <button (click)="select(mapping.id)" type="button" data-bs-toggle="modal" data-bs-target="#confirm-modal" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></button>
           </td>
         </tr>
         </tbody>
@@ -31,3 +31,4 @@
   </div>
 </div>
 <app-aircraft-mapping-modal (createdEvent)="load()"></app-aircraft-mapping-modal>
+<app-confirm-modal (confirmEvent)="delete()"></app-confirm-modal>

@@ -21,4 +21,8 @@ export class AircraftMappingService {
   createMapping(simKey: string, icao: string) {
     return this.http.post(this.baseUrl + '/sys-admin/aircraft-mapping', {simKey, icao});
   }
+
+  deleteMapping(id: number) {
+    return this.http.delete(this.baseUrl + '/sys-admin/aircraft-mapping/' + id);
+  }
 }

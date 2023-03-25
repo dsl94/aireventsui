@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AircraftMapping} from "../../dto/aircraft-mapping.model";
 import {AircraftMappingService} from "../../services/aircraft-mapping.service";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-aircraft-mapping-table',
@@ -9,8 +10,9 @@ import {AircraftMappingService} from "../../services/aircraft-mapping.service";
 })
 export class AircraftMappingTableComponent implements OnInit {
   mappings: AircraftMapping[] = []
+  selected: number = -1;
 
-  constructor(private mappingService: AircraftMappingService) {
+  constructor(private mappingService: AircraftMappingService, private toastr: ToastrService) {
   }
   ngOnInit(): void {
     this.load();
@@ -22,4 +24,21 @@ export class AircraftMappingTableComponent implements OnInit {
     });
   }
 
+  select(id: number) {
+    this.selected = id;
+  }
+
+  delete() {
+    if (this.selected === -1) {
+      this.toastr.error("Something went wrong, try to refresh page");
+    } else {
+      this.mappingService.deleteMapping(this.selected).subscribe(data => {
+        this.toastr.success("Mapping deleted");
+        this.load();
+      },
+        error => {
+        this.toastr.error(error.error.message)
+        });
+    }
+  }
 }
