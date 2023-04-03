@@ -29,6 +29,10 @@ import { AircraftMappingComponent } from './pages/aircraft-mapping/aircraft-mapp
 import { AircraftMappingTableComponent } from './components/aircraft-mapping-table/aircraft-mapping-table.component';
 import { AircraftMappingModalComponent } from './components/aircraft-mapping-modal/aircraft-mapping-modal.component';
 import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
+import { UserTableComponent } from './components/user-table/user-table.component';
+import { AdminUsersComponent } from './pages/admin-users/admin-users.component';
+import { ActivePillComponent } from './components/active-pill/active-pill.component';
+import { RolePillComponent } from './components/role-pill/role-pill.component';
 
 const routes: Routes = [
   // osnovne rute
@@ -44,6 +48,7 @@ const routes: Routes = [
       [
         {path: 'pirep', component: PirepComponent},
         { path: 'aircraft-mapping', component: AircraftMappingComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SYSTEM_ADMIN']}},
+        { path: 'admin-users', component: AdminUsersComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SYSTEM_ADMIN']}},
       ]
   }
 ]
@@ -68,7 +73,11 @@ const routes: Routes = [
     AircraftMappingComponent,
     AircraftMappingTableComponent,
     AircraftMappingModalComponent,
-    ConfirmModalComponent
+    ConfirmModalComponent,
+    UserTableComponent,
+    AdminUsersComponent,
+    ActivePillComponent,
+    RolePillComponent
   ],
   imports: [
     BrowserModule,

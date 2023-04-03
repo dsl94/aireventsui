@@ -1,0 +1,49 @@
+<div class="card">
+<!--  <div class="card-header">-->
+<!--    <button type="button" data-bs-toggle="modal" data-bs-target="#create-mapping-modal" class="btn btn-primary"><span><i class="fas fa-plus-circle"></i></span> Add Mapping</button>-->
+<!--  </div>-->
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table header-border table-responsive-sm">
+        <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Roles</th>
+          <th>Is Active</th>
+          <th>Created At</th>
+          <th>Last Login At</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let user of users">
+          <td>
+            {{user.fullName}}
+          </td>
+          <td>
+            {{user.email}}
+          </td>
+          <td>
+            <app-role-pill *ngFor="let role of user.roles" [role]="role"></app-role-pill>
+          </td>
+          <td>
+            <app-active-pill [active]="user.active"></app-active-pill>
+          </td>
+          <td>
+            <span class="text-muted">{{user.createdDate}}</span>
+          </td>
+          <td>
+            <span class="text-muted">{{user.lastLoginDate}}</span>
+          </td>
+          <td>
+            <a href="#" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-pencil-alt"></i></a>
+            <button type="button" data-bs-toggle="modal" data-bs-target="#confirm-modal" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<app-confirm-modal (confirmEvent)="delete()"></app-confirm-modal>
