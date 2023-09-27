@@ -33,6 +33,10 @@ import { AdminUsersComponent } from './pages/admin-users/admin-users.component';
 import { ActivePillComponent } from './components/active-pill/active-pill.component';
 import { RolePillComponent } from './components/role-pill/role-pill.component';
 import {UserDetailsComponent} from "./pages/user-details/user-details.component";
+import { ProfileComponent } from './pages/profile/profile.component';
+import { RacesComponent } from './pages/races/races.component';
+import { RaceDetailsComponent } from './pages/race-details/race-details.component';
+import { RaceModalComponent } from './components/race-modal/race-modal.component';
 
 const routes: Routes = [
   // osnovne rute
@@ -52,6 +56,18 @@ const routes: Routes = [
       {
         path: 'user/:id', // child route path
         component: UserDetailsComponent, // child route component that the router renders
+      },
+      {
+        path: 'profile', // child route path
+        component: ProfileComponent, // child route component that the router renders
+      },
+      {
+        path: 'races', // child route path
+        component: RacesComponent, // child route component that the router renders
+      },
+      {
+        path: 'race/:id', // child route path
+        component: RaceDetailsComponent, // child route component that the router renders
       },
       // {
       //   path: 'aircrafts', // child route path
@@ -86,8 +102,16 @@ const routes: Routes = [
     data: { roles: ['ROLE_USER'] },
     children: [
       {
-        path: 'pirep/:id', // child route path
-        component: PirepComponent, // child route component that the router renders
+        path: 'profile', // child route path
+        component: ProfileComponent, // child route component that the router renders
+      },
+      {
+        path: 'races', // child route path
+        component: RacesComponent, // child route component that the router renders
+      },
+      {
+        path: 'race/:id', // child route path
+        component: RaceDetailsComponent, // child route component that the router renders
       },
     ],
   },
@@ -118,6 +142,10 @@ const routes: Routes = [
     ActivePillComponent,
     RolePillComponent,
     UserDetailsComponent,
+    ProfileComponent,
+    RacesComponent,
+    RaceDetailsComponent,
+    RaceModalComponent,
   ],
   imports: [
     BrowserModule,

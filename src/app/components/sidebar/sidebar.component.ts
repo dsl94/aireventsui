@@ -22,7 +22,7 @@ export class SidebarComponent implements OnInit {
     let roles = this.tokenService.getUser().roles;
     this.rawRole = roles[0];
     if(roles.includes('ROLE_USER') || roles.includes('ROLE_ADMIN')) {
-      this.role = "Pilot";
+      this.role = "Član";
     } else if (roles.includes('ROLE_SYSTEM_ADMIN')) {
       this.role = "Super admin";
     }

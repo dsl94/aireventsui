@@ -50,11 +50,11 @@ export class LoginComponent implements OnInit{
         if(this.roles.includes('ROLE_SYSTEM_ADMIN')) {
           this.redirect()
         } else {
-          this.redirect()
+          this.redirectUser()
         }
       },
       err => {
-        this.toastr.error("Bad credentials");
+        this.toastr.error("Podaci nisu ispravni");
       }
     );
   }
@@ -65,5 +65,13 @@ export class LoginComponent implements OnInit{
      a.href="/admin/users"
 
      a.click()
+  }
+
+  redirectUser() {
+    var a =document.createElement("a")
+
+    a.href="/user/races"
+
+    a.click()
   }
 }

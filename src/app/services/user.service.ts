@@ -34,4 +34,8 @@ export class UserService {
   deleteUser(id: any) {
     return this.http.delete(this.baseUrl + '/sys-admin/user/' + id);
   }
+
+  getProfile() {
+    return this.http.get<UserDetails>(this.baseUrl + '/profile');
+  }
 }

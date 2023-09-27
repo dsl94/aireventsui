@@ -1,0 +1,46 @@
+<div class="modal fade" id="race-modal">
+  <div class="modal-dialog" role="document">
+    <form class="user" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Dodavanje nove trke</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal">
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label class="mb-1"><strong>Naziv trke <app-ms></app-ms></strong></label>
+            <input type="text" class="form-control" name="title"
+                   [(ngModel)]="form.title" required #title="ngModel">
+            <div class="alert alert-danger" role="alert"
+                 *ngIf="title.errors && f.submitted">
+              Naslov trke je obavezan!
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="mb-1"><strong>Distance <app-ms></app-ms></strong></label>
+            <input type="text" class="form-control" name="email"
+                   [(ngModel)]="form.distances" required #distances="ngModel">
+            <div class="alert alert-danger" role="alert"
+                 *ngIf="distances.errors && f.submitted">
+              Distance su obavezne
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="mb-1"><strong>Datum trke <app-ms></app-ms></strong></label>
+            <input type="date" class="form-control" name="date"
+                   [(ngModel)]="form.date"  #date="ngModel" required>
+            <div class="alert alert-danger" role="alert"
+                 *ngIf="date.errors && f.submitted">
+              Datum je obavezan
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger light" id="closeRaceModal" data-bs-dismiss="modal">Zatvori</button>
+          <button type="submit" class="btn btn-primary">Kreiraj</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
