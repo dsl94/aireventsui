@@ -18,4 +18,20 @@ export class UserService {
   getAllUsers() {
     return this.http.get<UserDetails[]>(this.baseUrl + '/sys-admin/user');
   }
+
+  createUser(request: any) {
+    return this.http.post(this.baseUrl + '/sys-admin/user', request);
+  }
+
+  getUser(id: any) {
+    return this.http.get<UserDetails>(this.baseUrl + '/sys-admin/user/' + id);
+  }
+
+  updateUser(id: any, fullName: string, membershipUntil: any) {
+    return this.http.put<UserDetails>(this.baseUrl + '/sys-admin/user/' + id, {fullName, membershipUntil});
+  }
+
+  deleteUser(id: any) {
+    return this.http.delete(this.baseUrl + '/sys-admin/user/' + id);
+  }
 }

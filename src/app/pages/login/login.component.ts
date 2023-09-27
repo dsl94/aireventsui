@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit{
       this.roles = this.tokenService.getUser().roles;
       if(this.roles.includes('ROLE_USER')) {
         this.redirect();
-      } else if (this.roles.includes('ROLE_ADMIN')) {
+      } else if (this.roles.includes('ROLE_SYSTEM_ADMIN')) {
         this.router.navigate(['/admin/dashboard']);
       }
     }
@@ -47,10 +47,10 @@ export class LoginComponent implements OnInit{
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.tokenService.getUser().roles;
-        if(this.roles.includes('ROLE_USER')) {
-          this.redirect();
-        } else if (this.roles.includes('ROLE_ADMIN')) {
-          this.router.navigate(['/admin/dashboard']);
+        if(this.roles.includes('ROLE_SYSTEM_ADMIN')) {
+          this.redirect()
+        } else {
+          this.redirect()
         }
       },
       err => {
@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit{
    redirect() {
      var a =document.createElement("a")
 
-     a.href="/home"
+     a.href="/admin/users"
 
      a.click()
   }

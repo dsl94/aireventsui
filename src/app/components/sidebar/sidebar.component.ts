@@ -11,17 +11,20 @@ export class SidebarComponent implements OnInit {
 
   fullName: string = '';
   role: string = '';
+
+  rawRole: string = '';
   constructor(private tokenService: TokenService) {
 
   }
 
   ngOnInit(): void {
-    this.fullName = this.tokenService.getUser().fullName;
+    this.fullName = this.tokenService.getUser().username;
     let roles = this.tokenService.getUser().roles;
-    if(roles.includes('ROLE_USER')) {
+    this.rawRole = roles[0];
+    if(roles.includes('ROLE_USER') || roles.includes('ROLE_ADMIN')) {
       this.role = "Pilot";
-    } else if (roles.includes('ROLE_ADMIN')) {
-      this.role = "Dispatcher";
+    } else if (roles.includes('ROLE_SYSTEM_ADMIN')) {
+      this.role = "Super admin";
     }
   }
 

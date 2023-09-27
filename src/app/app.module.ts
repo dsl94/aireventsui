@@ -26,32 +26,72 @@ import {AuthGuard} from "./helpers/auth.guard";
 import {AuthInterceptor} from "./helpers/auth.interceptor";
 import { LogoutButtonComponent } from './components/logout-button/logout-button.component';
 import { AircraftMappingComponent } from './pages/aircraft-mapping/aircraft-mapping.component';
-import { AircraftMappingTableComponent } from './components/aircraft-mapping-table/aircraft-mapping-table.component';
-import { AircraftMappingModalComponent } from './components/aircraft-mapping-modal/aircraft-mapping-modal.component';
+import { UserModalComponent } from './components/user-modal/user-modal.component';
 import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
 import { UserTableComponent } from './components/user-table/user-table.component';
 import { AdminUsersComponent } from './pages/admin-users/admin-users.component';
 import { ActivePillComponent } from './components/active-pill/active-pill.component';
 import { RolePillComponent } from './components/role-pill/role-pill.component';
+import {UserDetailsComponent} from "./pages/user-details/user-details.component";
 
 const routes: Routes = [
   // osnovne rute
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'register', component: RegisterComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
   {
-    path: 'home',
+    path: 'admin',
     component: IndexComponent,
     canActivate: [AuthGuard],
-    data: { roles: ['ROLE_USER', 'ROLE_ADMIN', 'ROLE_SYSTEM_ADMIN'] },
-    children:
-      [
-        {path: 'pirep', component: PirepComponent},
-        { path: 'aircraft-mapping', component: AircraftMappingComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SYSTEM_ADMIN']}},
-        { path: 'admin-users', component: AdminUsersComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SYSTEM_ADMIN']}},
-      ]
-  }
-]
+    data: { roles: ['ROLE_SYSTEM_ADMIN'] },
+    children: [
+      {
+        path: 'users', // child route path
+        component: AdminUsersComponent, // child route component that the router renders
+      },
+      {
+        path: 'user/:id', // child route path
+        component: UserDetailsComponent, // child route component that the router renders
+      },
+      // {
+      //   path: 'aircrafts', // child route path
+      //   component: AircraftListComponent, // child route component that the router renders
+      // },
+      // {
+      //   path: 'flights', // child route path
+      //   component: FlightListComponent, // child route component that the router renders
+      // },
+      // {
+      //   path: 'spc', // child route path
+      //   component: SpecialCargoListComponent, // child route component that the router renders
+      // },
+    ],
+  },
+  {
+    path: 'airadmin',
+    component: IndexComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['ROLE_ADMIN'] },
+    children: [
+      {
+        path: 'pirep/:id', // child route path
+        component: PirepComponent, // child route component that the router renders
+      },
+    ],
+  },
+  {
+    path: 'user',
+    component: IndexComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['ROLE_USER'] },
+    children: [
+      {
+        path: 'pirep/:id', // child route path
+        component: PirepComponent, // child route component that the router renders
+      },
+    ],
+  },
+];
 
 @NgModule({
   declarations: [
@@ -71,13 +111,13 @@ const routes: Routes = [
     LoginComponent,
     LogoutButtonComponent,
     AircraftMappingComponent,
-    AircraftMappingTableComponent,
-    AircraftMappingModalComponent,
+    UserModalComponent,
     ConfirmModalComponent,
     UserTableComponent,
     AdminUsersComponent,
     ActivePillComponent,
-    RolePillComponent
+    RolePillComponent,
+    UserDetailsComponent,
   ],
   imports: [
     BrowserModule,

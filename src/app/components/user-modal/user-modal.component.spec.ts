@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AircraftMappingModalComponent } from './aircraft-mapping-modal.component';
+import { UserModalComponent } from './user-modal.component';
 
 describe('AircraftMappingModalComponent', () => {
-  let component: AircraftMappingModalComponent;
-  let fixture: ComponentFixture<AircraftMappingModalComponent>;
+  let component: UserModalComponent;
+  let fixture: ComponentFixture<UserModalComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AircraftMappingModalComponent ]
+      declarations: [ UserModalComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AircraftMappingModalComponent);
+    fixture = TestBed.createComponent(UserModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

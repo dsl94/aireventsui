@@ -10,7 +10,7 @@
                 <div class="text-center mb-3">
                   <app-logo></app-logo>
                 </div>
-                <h4 class="text-center mb-4">Sign in</h4>
+                <h4 class="text-center mb-4">Prijava</h4>
                 <form class="user" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
                   <div class="mb-3">
                     <label class="mb-1"><strong>Email <app-ms></app-ms></strong></label>
@@ -18,25 +18,25 @@
                            [(ngModel)]="form.email" required #email="ngModel">
                     <div class="alert alert-danger" role="alert"
                          *ngIf="email.errors && f.submitted">
-                      Email is required!
+                      Email je obavezan!
                     </div>
                   </div>
                   <div class="mb-3">
-                    <label class="mb-1"><strong>Password <app-ms></app-ms></strong></label>
+                    <label class="mb-1"><strong>Lozinka <app-ms></app-ms></strong></label>
                     <input type="password" class="form-control" name="password"
                            [(ngModel)]="form.password" required #password="ngModel">
                     <div class="alert alert-danger" role="alert"
                          *ngIf="password.errors && f.submitted">
-                      Password is required!
+                      Lozinka je obavezna!
                     </div>
                   </div>
                   <div class="text-center">
-                    <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+                    <button type="submit" class="btn btn-primary btn-block">Prijavi se</button>
                   </div>
                 </form>
-                <div class="new-account mt-3">
-                  <p>Don't have an account? <a class="text-primary" routerLink="/register">Sign up</a></p>
-                </div>
+<!--                <div class="new-account mt-3">-->
+<!--                  <p>Nemaš nalog? <a class="text-primary" routerLink="/register">Registracija</a></p>-->
+<!--                </div>-->
               </div>
             </div>
           </div>
