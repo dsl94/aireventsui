@@ -37,6 +37,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { RacesComponent } from './pages/races/races.component';
 import { RaceDetailsComponent } from './pages/race-details/race-details.component';
 import { RaceModalComponent } from './components/race-modal/race-modal.component';
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { EditPasswordComponent } from './components/edit-password/edit-password.component';
 
 const routes: Routes = [
   // osnovne rute
@@ -146,6 +148,8 @@ const routes: Routes = [
     RacesComponent,
     RaceDetailsComponent,
     RaceModalComponent,
+    EditProfileComponent,
+    EditPasswordComponent,
   ],
   imports: [
     BrowserModule,

@@ -6,6 +6,10 @@ export interface UserDetails {
   fullName: string;
   email: string;
   stravaId: string;
+  gender: string;
+  phone: string;
+  info: string;
+  shirtSize: string;
   roles: string[];
   createdDate: string;
   updatedDate: string;

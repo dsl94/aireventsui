@@ -27,8 +27,8 @@ export class UserService {
     return this.http.get<UserDetails>(this.baseUrl + '/sys-admin/user/' + id);
   }
 
-  updateUser(id: any, fullName: string, membershipUntil: any) {
-    return this.http.put<UserDetails>(this.baseUrl + '/sys-admin/user/' + id, {fullName, membershipUntil});
+  updateUser(id: any, fullName: string, membershipUntil: any, shirtSize: any, phone: any, info: any) {
+    return this.http.put<UserDetails>(this.baseUrl + '/sys-admin/user/' + id, {fullName, membershipUntil, shirtSize, phone, info});
   }
 
   deleteUser(id: any) {
@@ -37,5 +37,13 @@ export class UserService {
 
   getProfile() {
     return this.http.get<UserDetails>(this.baseUrl + '/profile');
+  }
+
+  updateProfile(fullName: string, email: any, stravaId: string, phone: string, shirtSize: any, info: any) {
+    return this.http.put<UserDetails>(this.baseUrl + '/profile', {fullName, email, stravaId, phone, shirtSize, info});
+  }
+
+  changePassword(newPassword: string) {
+    return this.http.put(this.baseUrl + '/profile/password', {newPassword});
   }
 }

@@ -36,9 +36,26 @@
           </div>
         </div>
         <div class="mb-3">
-          <label class="mb-1"><strong>Strava id </strong></label>
-          <input type="text" class="form-control" name="stravaId"
-                 [(ngModel)]="form.stravaId"  #stravaId="ngModel">
+          <label class="mb-1"><strong>Pol <app-ms></app-ms></strong></label>
+          <select class="form-control" name="gender"
+                  [(ngModel)]="form.gender"  #gender="ngModel">
+            <option value="M">Muškarac</option>
+            <option value="F">Žena</option>
+          </select>
+          <div class="alert alert-danger" role="alert"
+               *ngIf="gender.errors && f.submitted">
+            Pol je obavezan
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="mb-1"><strong>Telefon </strong></label>
+          <input type="text" class="form-control" name="phone"
+                 [(ngModel)]="form.phone"  #phone="ngModel">
+        </div>
+        <div class="mb-3">
+          <label class="mb-1"><strong>Dodatne informacije </strong></label>
+          <textarea type="text" class="form-control" name="info"
+                    [(ngModel)]="form.info"  #info="ngModel"></textarea>
         </div>
         <div class="mb-3">
           <label class="mb-1"><strong>Članarina važi do</strong></label>

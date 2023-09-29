@@ -13,7 +13,9 @@ export class UserModalComponent {
     fullName: null,
     email: null,
     password: null,
-    stravaId: null,
+    gender: null,
+    phone: null,
+    info: null,
     membershipUntil: null,
   };
   constructor(private userService: UserService, private toastr: ToastrService ) {

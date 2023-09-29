@@ -17,6 +17,9 @@ export class UserDetailsComponent implements OnInit {
   form: any = {
     fullName: null,
     membershipUntil: null,
+    phone: null,
+    info: null,
+    shirtSize: null,
   };
 
   constructor(private userService: UserService, private activatedRoute: ActivatedRoute, private toasts: ToastrService) {
@@ -32,6 +35,9 @@ export class UserDetailsComponent implements OnInit {
     this.userService.getUser(this.id).subscribe(data => {
       this.user = data;
       this.form.fullName = this.user.fullName;
+      this.form.phone = this.user.phone;
+      this.form.info = this.user.info;
+      this.form.shirtSize = this.user.shirtSize;
       const parts = this.user.membershipUntil.split('-');
       const day = parseInt(parts[0]);
       const month = parseInt(parts[1]) - 1; // Month is 0-based (0 for January, 1 for February, etc.)
@@ -42,9 +48,17 @@ export class UserDetailsComponent implements OnInit {
   }
 
   onSubmit() {
-    this.userService.updateUser(this.id, this.form.fullName, this.form.membershipUntil).subscribe(data => {
+    this.userService.updateUser(this.id, this.form.fullName, this.form.membershipUntil, this.form.shirtSize, this.form.phone, this.form.info).subscribe(data => {
       this.load();
       this.toasts.success("Član uspešno izmenjen")
     });
+  }
+
+  getGender(gender: any) {
+    if (gender == 'M') {
+      return "Muškarac";
+    } else {
+      return 'Žena';
+    }
   }
 }

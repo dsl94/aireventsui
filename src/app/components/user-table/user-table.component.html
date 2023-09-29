@@ -8,8 +8,9 @@
         <thead>
         <tr>
           <th>Ime i prezime</th>
+          <th>Pol</th>
           <th>Email</th>
-          <th>Strava</th>
+          <th>Telefon</th>
           <th>Istek članarine</th>
           <th></th>
         </tr>
@@ -20,10 +21,13 @@
             {{user.fullName}}
           </td>
           <td>
+            {{user.gender}}
+          </td>
+          <td>
             {{user.email}}
           </td>
           <td>
-            {{user.stravaId}}
+            {{user.phone}}
           </td>
           <td>
             <span class="text-{{getColorForDate(user.membershipUntil)}}">{{user.membershipUntil}}</span>
