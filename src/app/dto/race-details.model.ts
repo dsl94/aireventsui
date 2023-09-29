@@ -3,7 +3,12 @@ export interface RaceDetails {
   title: string;
   date: string;
   distances: string;
-  users: string[];
+  users: UserRace[];
+}
+
+export interface UserRace {
+  id: number;
+  name: string;
 }
 
 export class RaceRequest {

@@ -1,1 +1,65 @@
-<p>race-details works!</p>
+<app-page-title title="Detalji trke"></app-page-title>
+<div class="row">
+  <div class="col-lg-7">
+    <div class="card">
+      <div class="card-body">
+        <form class="user" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+          <h4>Podaci o trci</h4><br>
+          <div class="mb-3">
+            <label class="mb-1"><strong>Naziv trke <app-ms></app-ms></strong></label>
+            <input type="text" class="form-control" name="title"
+                   [(ngModel)]="form.title" required #title="ngModel" [disabled]="!isAdmin" [readOnly]="!isAdmin">
+            <div class="alert alert-danger" role="alert"
+                 *ngIf="title.errors && f.submitted">
+              Naslov trke je obavezan!
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="mb-1"><strong>Distance <app-ms></app-ms></strong></label>
+            <input type="text" class="form-control" name="email"
+                   [(ngModel)]="form.distances" required #distances="ngModel" [disabled]="!isAdmin" [readOnly]="!isAdmin">
+            <div class="alert alert-danger" role="alert"
+                 *ngIf="distances.errors && f.submitted">
+              Distance su obavezne
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="mb-1"><strong>Datum trke <app-ms></app-ms></strong></label>
+            <input type="date" class="form-control" name="date"
+                   [(ngModel)]="form.date"  #date="ngModel" [disabled]="!isAdmin" [readOnly]="!isAdmin" required>
+            <div class="alert alert-danger" role="alert"
+                 *ngIf="date.errors && f.submitted">
+              Datum je obavezan
+            </div>
+          </div>
+          <button *ngIf="isAdmin" type="submit" class="btn btn-primary">Izmeni</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-5">
+    <div class="card">
+      <div class="card-body">
+        <h4>Prijavljeni članovi</h4><br>
+        <div class="table-responsive">
+          <table class="table header-border table-responsive-sm">
+            <thead>
+            <tr>
+              <th>Ime i prezime</th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let user of race.users">
+              <td>{{user.name}}</td>
+              <td>
+
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

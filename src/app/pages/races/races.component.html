@@ -32,6 +32,8 @@
                 {{race.users.length}}
               </td>
               <td>
+                <button *ngIf="displayGo(race)" (click)="going(race.id)" type="button" class="btn btn-success shadow btn-xs sharp"><i class="fas fa-plus"></i></button>
+                <button *ngIf="!displayGo(race)" (click)="notGoing(race.id)" type="button" class="btn btn-warning shadow btn-xs sharp"><i class="fas fa-minus"></i></button>&nbsp;
                 <a *ngIf="isAdmin" [routerLink]="['/admin/race/', race.id]" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-pencil-alt"></i></a>
                 <a *ngIf="!isAdmin" [routerLink]="['/user/race/', race.id]" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-eye"></i></a>
                 <button *ngIf="isAdmin" (click)="markForDelete(race.id)" type="button" data-bs-toggle="modal" data-bs-target="#confirm-modal" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></button>

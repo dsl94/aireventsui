@@ -27,4 +27,12 @@ export class RaceService {
   delete(id: any) {
     return this.http.delete(this.baseUrl + '/race/' + id);
   }
+
+  go(id: number) {
+    return this.http.put<RaceDetails>(this.baseUrl + '/race/' + id + '/go', null);
+  }
+
+  noGo(id: number) {
+    return this.http.put<RaceDetails>(this.baseUrl + '/race/' + id + '/no-go', null);
+  }
 }
