@@ -48,10 +48,10 @@ export class RaceReportModalComponent {
           this.form.distance = "10";
           break;
         case "Polumaraton":
-          this.form.distance = "21.1";
+          this.form.distance = "Polumaraton";
           break;
         case "Maraton":
-          this.form.distance = "42.2";
+          this.form.distance = "Maraton";
           break;
         case "Sprint trijatlon":
           this.form.distance = "Sprint trijatlon";
