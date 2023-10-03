@@ -39,6 +39,8 @@ import { RaceDetailsComponent } from './pages/race-details/race-details.componen
 import { RaceModalComponent } from './components/race-modal/race-modal.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { EditPasswordComponent } from './components/edit-password/edit-password.component';
+import { RaceReportsComponent } from './pages/race-reports/race-reports.component';
+import { RaceReportModalComponent } from './components/race-report-modal/race-report-modal.component';
 
 const routes: Routes = [
   // osnovne rute
@@ -70,6 +72,10 @@ const routes: Routes = [
       {
         path: 'race/:id', // child route path
         component: RaceDetailsComponent, // child route component that the router renders
+      },
+      {
+        path: 'race-reports', // child route path
+        component: RaceReportsComponent, // child route component that the router renders
       },
       // {
       //   path: 'aircrafts', // child route path
@@ -115,6 +121,10 @@ const routes: Routes = [
         path: 'race/:id', // child route path
         component: RaceDetailsComponent, // child route component that the router renders
       },
+      {
+        path: 'race-reports', // child route path
+        component: RaceReportsComponent, // child route component that the router renders
+      },
     ],
   },
 ];
@@ -150,6 +160,8 @@ const routes: Routes = [
     RaceModalComponent,
     EditProfileComponent,
     EditPasswordComponent,
+    RaceReportsComponent,
+    RaceReportModalComponent,
   ],
   imports: [
     BrowserModule,

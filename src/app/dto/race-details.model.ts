@@ -6,6 +6,15 @@ export interface RaceDetails {
   users: UserRace[];
 }
 
+export interface RaceReportDetails {
+  id: number;
+  title: string;
+  date: string;
+  distance: string;
+  info: string;
+  user: UserRace;
+}
+
 export interface UserRace {
   id: number;
   name: string;
@@ -20,5 +29,20 @@ export class RaceRequest {
     this.title = title;
     this.date = date;
     this.distances = distances;
+  }
+}
+
+export class RaceReportRequest {
+  title: string;
+  date: string;
+  distance: string;
+
+  info: string
+
+  constructor(title: string, date: string, distance: string, info: string) {
+    this.title = title;
+    this.date = date;
+    this.distance = distance;
+    this.info = info;
   }
 }

@@ -1,0 +1,50 @@
+<app-page-title title="Izveštaji sa trka"></app-page-title>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-header">
+        <button type="button" data-bs-toggle="modal" data-bs-target="#race-modal" class="btn btn-primary"><span><i class="fas fa-plus-circle"></i></span> Kreiraj izveštaj</button>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table header-border table-responsive-sm">
+            <thead>
+            <tr>
+              <th>Naziv trke</th>
+              <th *ngIf="isAdmin">Član</th>
+              <th>Datum</th>
+              <th>Distanca</th>
+              <th>Dodatne informacije</th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let report of reports">
+              <td>
+                {{report.title}}
+              </td>
+              <td *ngIf="isAdmin">
+                {{report.user.name}}
+              </td>
+              <td>
+                {{report.date}}
+              </td>
+              <td>
+                {{report.distance}}
+              </td>
+              <td>
+                {{report.info}}
+              </td>
+              <td>
+                <button (click)="markForDelete(report.id)" type="button" data-bs-toggle="modal" data-bs-target="#confirm-modal" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <app-race-report-modal (createdEvent)="load()"></app-race-report-modal>
+    <app-confirm-modal (confirmEvent)="delete()"></app-confirm-modal>
+  </div>
+</div>
