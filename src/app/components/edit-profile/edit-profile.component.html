@@ -24,6 +24,11 @@
         <label class="mb-1"><strong>Strava id </strong></label>
         <input type="text" class="form-control" name="stravaId"
                [(ngModel)]="form.stravaId"  #stravaId="ngModel">
+        <div *ngIf="user.stravaId == null || user.stravaId == ''">
+          <br>
+          <a *ngIf="isAdmin" href="https://www.strava.com/oauth/authorize?client_id=116659&redirect_uri=http://localhost:4200/admin/profile&scope=read&response_type=code" class="btn btn-primary">Poveži Strava nalog</a>
+          <a *ngIf="!isAdmin" href="https://www.strava.com/oauth/authorize?client_id=116659&redirect_uri=http://localhost:4200/user/profile&scope=read&response_type=code" class="btn btn-primary">Poveži Strava nalog</a>
+        </div>
       </div>
       <div class="mb-3">
         <label class="mb-1"><strong>Pol </strong></label>

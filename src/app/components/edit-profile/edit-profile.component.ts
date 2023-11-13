@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {UserDetails} from "../../dto/user-details.model";
 import {UserService} from "../../services/user.service";
 import {ToastrService} from "ngx-toastr";
+import {ActivatedRoute} from "@angular/router";
+import {TokenService} from "../../services/token.service";
 
 @Component({
   selector: 'app-edit-profile',
@@ -11,6 +13,7 @@ import {ToastrService} from "ngx-toastr";
 export class EditProfileComponent  implements OnInit {
   //@ts-ignore
   public user: UserDetails = null
+  isAdmin = false;
 
   form: any = {
     fullName: null,
@@ -21,10 +24,23 @@ export class EditProfileComponent  implements OnInit {
     info: null,
   };
 
-  constructor(private userService: UserService, private toastr: ToastrService) {
+  constructor(private userService: UserService, private tokenService: TokenService, private toastr: ToastrService, private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
+    let roles = this.tokenService.getUser().roles;
+    const role = roles[0];
+    if (role === 'ROLE_SYSTEM_ADMIN') {
+      this.isAdmin = true;
+    }
+    let code = this.activatedRoute.snapshot.queryParams['code'];
+    console.log(code)
+    if (code) {
+      this.userService.loginToStrava(code).subscribe(data => {
+        console.log("Login na stravu")
+        this.redirectUser();
+      });
+    }
     this.load();
   }
 
@@ -44,6 +60,18 @@ export class EditProfileComponent  implements OnInit {
       const date = new Date(year, month, day, 23, 59);
       this.user.membershipUntil = date.toISOString().substring(0, 10);
     });
+  }
+
+  redirectUser() {
+    var a =document.createElement("a")
+
+    a.href="/user/profile"
+    if (this.isAdmin) {
+      a.href="/admin/profile"
+    }
+
+
+    a.click()
   }
 
   onSubmit() {

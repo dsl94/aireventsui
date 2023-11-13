@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../services/user.service";
 import {ToastrService} from "ngx-toastr";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-edit-password',

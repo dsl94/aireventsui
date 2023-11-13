@@ -46,4 +46,8 @@ export class UserService {
   changePassword(newPassword: string) {
     return this.http.put(this.baseUrl + '/profile/password', {newPassword});
   }
+
+  loginToStrava(code: any) {
+    return this.http.post(this.baseUrl + "/strava", {code})
+  }
 }
