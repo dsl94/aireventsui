@@ -1,0 +1,46 @@
+<div class="modal fade" id="challenge-modal">
+  <div class="modal-dialog" role="document">
+    <form class="user" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Kreiranje novog izazova</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal">
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label class="mb-1"><strong>Naziv izazova <app-ms></app-ms></strong></label>
+            <input type="text" class="form-control" name="title"
+                   [(ngModel)]="form.title" required #title="ngModel">
+            <div class="alert alert-danger" role="alert"
+                 *ngIf="title.errors && f.submitted">
+              Naziv je obavezan!
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="mb-1"><strong>Datum početka <app-ms></app-ms></strong></label>
+            <input type="date" class="form-control" name="date"
+                   [(ngModel)]="form.startDate"  #startDate="ngModel" required>
+            <div class="alert alert-danger" role="alert"
+                 *ngIf="startDate.errors && f.submitted">
+              Datum početka je obavezan
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="mb-1"><strong>Datum kraja <app-ms></app-ms></strong></label>
+            <input type="date" class="form-control" name="date"
+                   [(ngModel)]="form.endDate"  #endDate="ngModel" required>
+            <div class="alert alert-danger" role="alert"
+                 *ngIf="endDate.errors && f.submitted">
+              Datum kraja je obavezan
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger light" id="closeChallengeModal" data-bs-dismiss="modal">Zatvori</button>
+          <button type="submit" class="btn btn-primary">Kreiraj</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

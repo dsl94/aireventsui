@@ -52,6 +52,10 @@
         <i class="fa fa-flag-checkered"></i>
         <span class="nav-text">Trke</span>
       </a>
+      <li *ngIf="rawRole=='ROLE_SYSTEM_ADMIN'" routerLinkActive="active"><a [routerLink]="['/admin/challenges']" aria-expanded="false">
+        <i class="fa fa-star"></i>
+        <span class="nav-text">Izazovi</span>
+      </a>
       </li>
       <li *ngIf="rawRole=='ROLE_SYSTEM_ADMIN'" routerLinkActive="active"><a [routerLink]="['/admin/race-reports']" aria-expanded="false">
         <i class="fa fa-file"></i>
@@ -61,6 +65,10 @@
       <li *ngIf="rawRole=='ROLE_USER'" routerLinkActive="active"><a [routerLink]="['/user/races']" aria-expanded="false">
         <i class="fa fa-flag-checkered"></i>
         <span class="nav-text">Trke</span>
+      </a>
+      <li *ngIf="rawRole=='ROLE_USER'" routerLinkActive="active"><a [routerLink]="['/user/challenges']" aria-expanded="false">
+        <i class="fa fa-star"></i>
+        <span class="nav-text">Izazovi</span>
       </a>
       </li>
       <li *ngIf="rawRole=='ROLE_USER'" routerLinkActive="active"><a [routerLink]="['/user/race-reports']" aria-expanded="false">

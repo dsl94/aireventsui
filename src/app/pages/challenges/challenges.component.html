@@ -1,0 +1,50 @@
+<app-page-title title="Izazovi"></app-page-title>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-header" *ngIf="isAdmin">
+        <button type="button" data-bs-toggle="modal" data-bs-target="#challenge-modal" class="btn btn-primary"><span><i class="fas fa-plus-circle"></i></span> Kreiraj izazov</button>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table header-border table-responsive-sm">
+            <thead>
+            <tr>
+              <th>Naziv izazova</th>
+              <th>Datum početka</th>
+              <th>Datum kraja</th>
+              <th>Broj prijavljenih trkača</th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let challenge of challenges">
+              <td>
+                {{challenge.title}}
+              </td>
+              <td>
+                {{challenge.startDate}}
+              </td>
+              <td>
+                {{challenge.endDate}}
+              </td>
+              <td>
+                {{challenge.users.length}}
+              </td>
+              <td>
+                <button *ngIf="displayGo(challenge)" (click)="going(challenge.id)" type="button" class="btn btn-success shadow btn-xs sharp"><i class="fas fa-plus"></i></button>
+                <button *ngIf="!displayGo(challenge)" (click)="notGoing(challenge.id)" type="button" class="btn btn-warning shadow btn-xs sharp"><i class="fas fa-minus"></i></button>&nbsp;
+                <a *ngIf="isAdmin" [routerLink]="['/admin/challenge/', challenge.id]" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-pencil-alt"></i></a>
+                <a *ngIf="!isAdmin" [routerLink]="['/user/challenge/', challenge.id]" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-eye"></i></a>
+                <button *ngIf="isAdmin" (click)="markForDelete(challenge.id)" type="button" data-bs-toggle="modal" data-bs-target="#confirm-modal" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <app-challenge-modal (createdEvent)="load()"></app-challenge-modal>
+    <app-confirm-modal (confirmEvent)="delete()"></app-confirm-modal>
+  </div>
+</div>

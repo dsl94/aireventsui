@@ -41,6 +41,9 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
 import { EditPasswordComponent } from './components/edit-password/edit-password.component';
 import { RaceReportsComponent } from './pages/race-reports/race-reports.component';
 import { RaceReportModalComponent } from './components/race-report-modal/race-report-modal.component';
+import { ChallengesComponent } from './pages/challenges/challenges.component';
+import { ChallengeDetailsComponent } from './pages/challenge-details/challenge-details.component';
+import { ChallengeModalComponent } from './components/challenge-modal/challenge-modal.component';
 
 const routes: Routes = [
   // osnovne rute
@@ -76,6 +79,14 @@ const routes: Routes = [
       {
         path: 'race-reports', // child route path
         component: RaceReportsComponent, // child route component that the router renders
+      },
+      {
+        path: 'challenges', // child route path
+        component: ChallengesComponent, // child route component that the router renders
+      },
+      {
+        path: 'challenge/:id', // child route path
+        component: ChallengeDetailsComponent, // child route component that the router renders
       },
       // {
       //   path: 'aircrafts', // child route path
@@ -125,6 +136,14 @@ const routes: Routes = [
         path: 'race-reports', // child route path
         component: RaceReportsComponent, // child route component that the router renders
       },
+      {
+        path: 'challenges', // child route path
+        component: ChallengesComponent, // child route component that the router renders
+      },
+      {
+        path: 'challenge/:id', // child route path
+        component: ChallengeDetailsComponent, // child route component that the router renders
+      },
     ],
   },
 ];
@@ -162,6 +181,9 @@ const routes: Routes = [
     EditPasswordComponent,
     RaceReportsComponent,
     RaceReportModalComponent,
+    ChallengesComponent,
+    ChallengeDetailsComponent,
+    ChallengeModalComponent,
   ],
   imports: [
     BrowserModule,

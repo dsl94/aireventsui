@@ -20,6 +20,10 @@ export class AuthService {
     }, httpOptions);
   }
 
+  stravaLogin(code: any): Observable<any> {
+    return this.http.post(this.baseUrl + "/strava/login", {code});
+  }
+
   register(register: Register) {
     return this.http.post(this.baseUrl + '/auth/register', register);
   }

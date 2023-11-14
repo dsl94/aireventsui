@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../../services/auth.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
 import {Register} from "../../dto/register.model";
 import {TokenService} from "../../services/token.service";
@@ -20,11 +20,29 @@ export class LoginComponent implements OnInit{
   errorMessage = '';
   roles: string[] = [];
 
-  constructor(private authService: AuthService, private tokenService: TokenService, private router: Router, private toastr: ToastrService) {
+  constructor(private authService: AuthService, private tokenService: TokenService, private router: Router, private toastr: ToastrService, private activatedRoute: ActivatedRoute) {
 
   }
 
   ngOnInit(): void {
+    let code = this.activatedRoute.snapshot.queryParams['code'];
+    console.log(code)
+    if (code) {
+      this.authService.stravaLogin(code).subscribe(data => {
+        this.tokenService.saveToken(data.token);
+        this.tokenService.saveUser(data);
+
+        this.isLoginFailed = false;
+        this.isLoggedIn = true;
+        this.roles = this.tokenService.getUser().roles;
+        console.log(data);
+        if(this.roles.includes('ROLE_SYSTEM_ADMIN')) {
+          this.redirect()
+        } else {
+          this.redirectUser()
+        }
+      });
+    }
     if (this.tokenService.getToken()) {
       this.isLoggedIn = true;
       this.roles = this.tokenService.getUser().roles;
