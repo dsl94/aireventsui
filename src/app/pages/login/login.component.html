@@ -10,7 +10,7 @@
                 <div class="text-center mb-3">
                   <app-logo></app-logo>
                 </div>
-                <h4 class="text-center mb-4">Prijava</h4>
+                <h4 class="text-center mb-4">Prijava koristeći email</h4>
                 <form class="user" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
                   <div class="mb-3">
                     <label class="mb-1"><strong>Email <app-ms></app-ms></strong></label>
@@ -34,11 +34,14 @@
                     <button type="submit" class="btn btn-primary btn-block">Prijavi se</button>
                   </div>
                 </form>
-                <div class="row">
-                  Ili se prijavi koristeći Stravu
+                <br>
+                <div class="mb-3">
+                  <div class="text-center">
+                    <h4 class="text-center mb-4">Prijava koristeći Stravu</h4>
+                  </div>
                 </div>
-                <div class="row">
-                  <a href="https://www.strava.com/oauth/authorize?client_id=116659&redirect_uri=http://localhost:4200/login&scope=read&response_type=code" class="btn btn-primary">Prijava koristeći Stravu</a>
+                <div class="mb-3">
+                  <a href="https://www.strava.com/oauth/authorize?client_id=116659&redirect_uri=http://localhost:4200/login&scope=read&response_type=code" class="btn btn-block btn-primary">Strava prijava</a>
                 </div>
 <!--                <div class="new-account mt-3">-->
 <!--                  <p>Nemaš nalog? <a class="text-primary" routerLink="/register">Registracija</a></p>-->
