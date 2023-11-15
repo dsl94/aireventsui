@@ -115,6 +115,26 @@ const routes: Routes = [
     ],
   },
   {
+    path: 'guest',
+    component: IndexComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['ROLE_GUEST'] },
+    children: [
+      {
+        path: 'profile', // child route path
+        component: ProfileComponent, // child route component that the router renders
+      },
+      {
+        path: 'challenges', // child route path
+        component: ChallengesComponent, // child route component that the router renders
+      },
+      {
+        path: 'challenge/:id', // child route path
+        component: ChallengeDetailsComponent, // child route component that the router renders
+      },
+      ]
+  },
+  {
     path: 'user',
     component: IndexComponent,
     canActivate: [AuthGuard],

@@ -4,12 +4,13 @@ export interface ChallengeDetails {
   startDate: string;
   endDate: string;
   lastSync: string;
-  users: UserRace[];
+  users: UserChallenge[];
 }
 
-export interface UserRace {
+export interface UserChallenge {
   id: number;
   name: string;
+  distance: number;
 }
 
 export class ChallengeRequest {

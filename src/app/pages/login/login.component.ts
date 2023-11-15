@@ -38,8 +38,10 @@ export class LoginComponent implements OnInit{
         console.log(data);
         if(this.roles.includes('ROLE_SYSTEM_ADMIN')) {
           this.redirect()
-        } else {
+        } else if (this.roles.includes('ROLE_USER')) {
           this.redirectUser()
+        } else {
+          this.redirectGuest();
         }
       });
     }
@@ -67,8 +69,10 @@ export class LoginComponent implements OnInit{
         this.roles = this.tokenService.getUser().roles;
         if(this.roles.includes('ROLE_SYSTEM_ADMIN')) {
           this.redirect()
-        } else {
+        } else if (this.roles.includes('ROLE_USER')) {
           this.redirectUser()
+        } else {
+          this.redirectGuest();
         }
       },
       err => {
@@ -89,6 +93,14 @@ export class LoginComponent implements OnInit{
     var a =document.createElement("a")
 
     a.href="/user/races"
+
+    a.click()
+  }
+
+  redirectGuest() {
+    var a =document.createElement("a")
+
+    a.href="/guest/challenges"
 
     a.click()
   }
