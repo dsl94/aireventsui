@@ -20,8 +20,11 @@ export class ChallengesComponent implements OnInit{
   userId = -1;
 
   isAdmin = false;
+  hasStrava = false;
 
   constructor(private challengeService: ChallengeService, private toastr: ToastrService, private tokenService: TokenService) {
+    this.hasStrava = tokenService.getUser().hasStrava;
+    console.log(tokenService.getUser().hasStrava);
   }
   ngOnInit(): void {
     let roles = this.tokenService.getUser().roles;

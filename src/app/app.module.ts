@@ -44,6 +44,8 @@ import { RaceReportModalComponent } from './components/race-report-modal/race-re
 import { ChallengesComponent } from './pages/challenges/challenges.component';
 import { ChallengeDetailsComponent } from './pages/challenge-details/challenge-details.component';
 import { ChallengeModalComponent } from './components/challenge-modal/challenge-modal.component';
+import { AdminGuestsComponent } from './pages/admin-guests/admin-guests.component';
+import { AdminGuestsTableComponent } from './components/admin-guests-table/admin-guests-table.component';
 
 const routes: Routes = [
   // osnovne rute
@@ -62,6 +64,14 @@ const routes: Routes = [
       },
       {
         path: 'user/:id', // child route path
+        component: UserDetailsComponent, // child route component that the router renders
+      },
+      {
+        path: 'guests', // child route path
+        component: AdminGuestsComponent, // child route component that the router renders
+      },
+      {
+        path: 'guests/:id', // child route path
         component: UserDetailsComponent, // child route component that the router renders
       },
       {
@@ -204,6 +214,8 @@ const routes: Routes = [
     ChallengesComponent,
     ChallengeDetailsComponent,
     ChallengeModalComponent,
+    AdminGuestsComponent,
+    AdminGuestsTableComponent,
   ],
   imports: [
     BrowserModule,

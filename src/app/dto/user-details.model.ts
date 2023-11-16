@@ -16,5 +16,5 @@ export interface UserDetails {
   membershipUntil: string;
   firstLoginDate: string;
   lastLoginDate: string;
-
+  stravaLogin: boolean;
 }

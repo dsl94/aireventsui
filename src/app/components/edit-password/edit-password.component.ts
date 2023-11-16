@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../services/user.service";
 import {ToastrService} from "ngx-toastr";
 import {ActivatedRoute} from "@angular/router";
+import {TokenService} from "../../services/token.service";
 
 @Component({
   selector: 'app-edit-password',
@@ -13,7 +14,10 @@ export class EditPasswordComponent {
     newPassword: null
   }
 
-  constructor(private userService: UserService, private toastr: ToastrService) {
+  stravaLogin: boolean = false;
+
+  constructor(private userService: UserService, private toastr: ToastrService, private tokenService: TokenService) {
+    this.stravaLogin = this.tokenService.getUser().stravaLogin;
   }
 
   onSubmit() {

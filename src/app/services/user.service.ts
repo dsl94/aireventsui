@@ -19,6 +19,10 @@ export class UserService {
     return this.http.get<UserDetails[]>(this.baseUrl + '/sys-admin/user');
   }
 
+  getAllGuests() {
+    return this.http.get<UserDetails[]>(this.baseUrl + '/sys-admin/user/guests');
+  }
+
   createUser(request: any) {
     return this.http.post(this.baseUrl + '/sys-admin/user', request);
   }

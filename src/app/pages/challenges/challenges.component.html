@@ -1,4 +1,11 @@
 <app-page-title title="Izazovi"></app-page-title>
+<div *ngIf="!hasStrava" class="row page-titles">
+  <ol class="breadcrumb">
+    Da bi učestvovali u izazovu morate povezati Strava nalog sa vašim nalogom. To možete uraditi tako što odete na profil
+    i kliknete dugme "Poveži Strava nalog". <b>Nakon toga se odjavite i prijavite ponovo!</b>
+  </ol>
+</div>
+
 <div class="row">
   <div class="col-lg-12">
     <div class="card">
@@ -32,8 +39,8 @@
                 {{challenge.users.length}}
               </td>
               <td>
-                <button *ngIf="displayGo(challenge)" (click)="going(challenge.id)" type="button" class="btn btn-success shadow btn-xs sharp"><i class="fas fa-plus"></i></button>
-                <button *ngIf="!displayGo(challenge)" (click)="notGoing(challenge.id)" type="button" class="btn btn-warning shadow btn-xs sharp"><i class="fas fa-minus"></i></button>&nbsp;
+                <button *ngIf="displayGo(challenge) && hasStrava" (click)="going(challenge.id)" type="button" class="btn btn-success shadow btn-xs sharp"><i class="fas fa-plus"></i></button>
+                <button *ngIf="!displayGo(challenge) && hasStrava" (click)="notGoing(challenge.id)" type="button" class="btn btn-warning shadow btn-xs sharp"><i class="fas fa-minus"></i></button>&nbsp;
                 <a *ngIf="isAdmin" [routerLink]="['/admin/challenge/', challenge.id]" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-pencil-alt"></i></a>
                 <a *ngIf="!isAdmin" [routerLink]="['/user/challenge/', challenge.id]" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-eye"></i></a>
                 <button *ngIf="isAdmin" (click)="markForDelete(challenge.id)" type="button" data-bs-toggle="modal" data-bs-target="#confirm-modal" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></button>

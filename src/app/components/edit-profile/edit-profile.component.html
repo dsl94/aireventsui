@@ -26,8 +26,8 @@
                [(ngModel)]="form.stravaId"  #stravaId="ngModel" disabled readonly>
         <div *ngIf="user.stravaId == null || user.stravaId == ''">
           <br>
-          <a *ngIf="isAdmin" href="https://www.strava.com/oauth/authorize?client_id=116659&redirect_uri=http://localhost:4200/admin/profile&scope=read&response_type=code" class="btn btn-primary">Poveži Strava nalog</a>
-          <a *ngIf="!isAdmin" href="https://www.strava.com/oauth/authorize?client_id=116659&redirect_uri=http://localhost:4200/user/profile&scope=read&response_type=code" class="btn btn-primary">Poveži Strava nalog</a>
+          <a *ngIf="isAdmin" href="https://www.strava.com/oauth/authorize?client_id=116659&redirect_uri=https://rcnapp.xyz/admin/profile&scope=activity:read_all&response_type=code" class="btn btn-primary">Poveži Strava nalog</a>
+          <a *ngIf="!isAdmin" href="https://www.strava.com/oauth/authorize?client_id=116659&redirect_uri=https://rcnapp.xyz/user/profile&scope=activity:read_all&response_type=code" class="btn btn-primary">Poveži Strava nalog</a>
         </div>
       </div>
       <div class="mb-3">
