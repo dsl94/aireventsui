@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit{
     let code = this.activatedRoute.snapshot.queryParams['code'];
     console.log(code)
     if (code) {
-      this.authService.stravaLogin(code).subscribe(data => {
+      const data = this.authService.stravaLogin(code)
         this.tokenService.saveToken(data.token);
         this.tokenService.saveUser(data);
 
@@ -43,7 +43,6 @@ export class LoginComponent implements OnInit{
         } else {
           this.redirectGuest();
         }
-      });
     }
     if (this.tokenService.getToken()) {
       this.isLoggedIn = true;

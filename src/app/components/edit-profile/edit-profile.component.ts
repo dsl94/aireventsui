@@ -36,10 +36,7 @@ export class EditProfileComponent  implements OnInit {
     let code = this.activatedRoute.snapshot.queryParams['code'];
     console.log(code)
     if (code) {
-      this.userService.loginToStrava(code).subscribe(data => {
-        console.log("Login na stravu")
-        this.redirectUser();
-      });
+      this.userService.loginToStrava(code);
     }
     this.load();
   }
