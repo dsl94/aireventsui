@@ -11,6 +11,7 @@ import {ToastrService} from "ngx-toastr";
 export class AdminGuestsTableComponent implements OnInit{
   users: UserDetails[] = []
   forDelete = -1;
+  forConvert = -1;
 
   constructor(private userService: UserService, private toastr: ToastrService) {
   }
@@ -33,5 +34,8 @@ export class AdminGuestsTableComponent implements OnInit{
 
   markForDelete(id: number) {
     this.forDelete = id;
+  }
+  markForConvert(id: number) {
+    this.forConvert = id;
   }
 }

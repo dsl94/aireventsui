@@ -46,6 +46,7 @@ import { ChallengeDetailsComponent } from './pages/challenge-details/challenge-d
 import { ChallengeModalComponent } from './components/challenge-modal/challenge-modal.component';
 import { AdminGuestsComponent } from './pages/admin-guests/admin-guests.component';
 import { AdminGuestsTableComponent } from './components/admin-guests-table/admin-guests-table.component';
+import { ConvertGuestModalComponent } from './components/convert-guest-modal/convert-guest-modal.component';
 
 const routes: Routes = [
   // osnovne rute
@@ -216,6 +217,7 @@ const routes: Routes = [
     ChallengeModalComponent,
     AdminGuestsComponent,
     AdminGuestsTableComponent,
+    ConvertGuestModalComponent,
   ],
   imports: [
     BrowserModule,

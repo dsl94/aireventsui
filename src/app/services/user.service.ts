@@ -37,6 +37,10 @@ export class UserService {
     return this.http.put<UserDetails>(this.baseUrl + '/sys-admin/user/' + id, {fullName, membershipUntil, shirtSize, phone, info});
   }
 
+  convertGuest(id: number, email: string, membershipUntil: any) {
+    return this.http.put<UserDetails>(this.baseUrl + '/sys-admin/user/' + id + '/convert', {email, membershipUntil});
+  }
+
   deleteUser(id: any) {
     return this.http.delete(this.baseUrl + '/sys-admin/user/' + id);
   }

@@ -34,6 +34,7 @@
             {{user.stravaId}}
           </td>
           <td>
+            <button (click)="markForConvert(user.id)" type="button" data-bs-toggle="modal" data-bs-target="#convert-modal" class="btn btn-primary shadow btn-xs sharp"><i class="fa fa-user-plus"></i></button>&nbsp;
             <button (click)="markForDelete(user.id)" type="button" data-bs-toggle="modal" data-bs-target="#confirm-modal" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></button>
           </td>
         </tr>
@@ -42,4 +43,5 @@
     </div>
   </div>
 </div>
+<app-convert-guest-modal [id]="forConvert" (createdEvent)="load()"></app-convert-guest-modal>
 <app-confirm-modal (confirmEvent)="delete()"></app-confirm-modal>

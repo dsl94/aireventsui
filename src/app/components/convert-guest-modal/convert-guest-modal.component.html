@@ -1,0 +1,33 @@
+<div class="modal fade" id="convert-modal">
+  <div class="modal-dialog" role="document">
+    <form class="user" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Pretvaranje gosta u člana</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal">
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label class="mb-1"><strong>Email <app-ms></app-ms></strong></label>
+            <input type="email" class="form-control" name="email"
+                   [(ngModel)]="form.email" required #email="ngModel">
+            <div class="alert alert-danger" role="alert"
+                 *ngIf="email.errors && f.submitted">
+              Email je obavezan
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="mb-1"><strong>Članarina važi do</strong></label>
+            <input type="date" class="form-control" name="membershipUntil"
+                   [(ngModel)]="form.membershipUntil"  #membershipUntil="ngModel">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger light" id="closeMappingModal" data-bs-dismiss="modal">Zatvori</button>
+          <button type="submit" class="btn btn-primary">Pretovri u člana</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
