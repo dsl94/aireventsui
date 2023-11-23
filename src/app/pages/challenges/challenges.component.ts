@@ -20,6 +20,7 @@ export class ChallengesComponent implements OnInit{
   userId = -1;
 
   isAdmin = false;
+  isGuest = false;
   hasStrava = false;
 
   constructor(private challengeService: ChallengeService, private toastr: ToastrService, private tokenService: TokenService) {
@@ -32,6 +33,9 @@ export class ChallengesComponent implements OnInit{
     this.rawRole = roles[0];
     if (this.rawRole === 'ROLE_SYSTEM_ADMIN') {
       this.isAdmin = true;
+    }
+    if (this.rawRole === 'ROLE_GUEST') {
+      this.isGuest = true;
     }
     this.load();
   }
