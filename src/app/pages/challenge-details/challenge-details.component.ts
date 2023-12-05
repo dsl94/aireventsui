@@ -18,6 +18,7 @@ export class ChallengeDetailsComponent implements OnInit {
   public challenge: ChallengeDetails = null
   rawRole: string = '';
   isAdmin = false;
+  loggedInUserId = -1;
 
   form: any = {
     title: null,
@@ -31,6 +32,7 @@ export class ChallengeDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     let roles = this.tokenService.getUser().roles;
+    this.loggedInUserId = this.tokenService.getUser().id;
     this.rawRole = roles[0];
     if (this.rawRole === 'ROLE_SYSTEM_ADMIN') {
       this.isAdmin = true;
@@ -47,7 +49,7 @@ export class ChallengeDetailsComponent implements OnInit {
       const day = parseInt(parts[0]);
       const month = parseInt(parts[1]) - 1; // Month is 0-based (0 for January, 1 for February, etc.)
       const year = parseInt(parts[2]);
-      const date = new Date(year, month, day, 23, 59);
+      const date = new Date(year, month, day, 1, 1);
       this.form.startDate = date.toISOString().substring(0, 10);
 
       const parts1 = this.challenge.endDate.split('-');
@@ -56,6 +58,7 @@ export class ChallengeDetailsComponent implements OnInit {
       const year1 = parseInt(parts1[2]);
       const date1 = new Date(year1, month1, day1, 23, 59);
       this.form.endDate = date1.toISOString().substring(0, 10);
+      this.challenge.users.sort((a, b) => b.distance - a.distance)
     });
   }
 

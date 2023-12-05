@@ -16,7 +16,7 @@
           </div>
           <div class="mb-3">
             <label class="mb-1"><strong>Datum početka <app-ms></app-ms></strong></label>
-            <input type="date" class="form-control" name="date"
+            <input type="date" class="form-control" name="startDate"
                    [(ngModel)]="form.startDate"  #startDate="ngModel" [disabled]="!isAdmin" [readOnly]="!isAdmin" required>
             <div class="alert alert-danger" role="alert"
                  *ngIf="startDate.errors && f.submitted">
@@ -25,7 +25,7 @@
           </div>
           <div class="mb-3">
             <label class="mb-1"><strong>Datum kraja <app-ms></app-ms></strong></label>
-            <input type="date" class="form-control" name="date"
+            <input type="date" class="form-control" name="endDate"
                    [(ngModel)]="form.endDate"  #endDate="ngModel" [disabled]="!isAdmin" [readOnly]="!isAdmin" required>
             <div class="alert alert-danger" role="alert"
                  *ngIf="endDate.errors && f.submitted">
@@ -53,8 +53,8 @@
             </thead>
             <tbody>
             <tr *ngFor="let user of challenge.users">
-              <td>{{user.name}}</td>
-              <td>{{user.distance}} km</td>
+              <td class="{{loggedInUserId == user.id ? 'text-success' : ''}}">{{user.name}}</td>
+              <td class="{{loggedInUserId == user.id ? 'text-success' : ''}}">{{user.distance | number:'1.2-2' }} km</td>
               <td>
 
               </td>
