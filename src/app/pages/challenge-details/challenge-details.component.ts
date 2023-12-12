@@ -4,7 +4,7 @@ import {RaceService} from "../../services/race.service";
 import {TokenService} from "../../services/token.service";
 import {ActivatedRoute} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
-import {ChallengeDetails, ChallengeRequest} from "../../dto/challenge.model";
+import {ChallengeDetails, ChallengeRequest, UserChallenge} from "../../dto/challenge.model";
 import {ChallengeService} from "../../services/challenge.service";
 
 @Component({
@@ -19,6 +19,8 @@ export class ChallengeDetailsComponent implements OnInit {
   rawRole: string = '';
   isAdmin = false;
   loggedInUserId = -1;
+  maleUsers: UserChallenge[] = []
+  femaleUsers: UserChallenge[] = []
 
   form: any = {
     title: null,
@@ -58,7 +60,10 @@ export class ChallengeDetailsComponent implements OnInit {
       const year1 = parseInt(parts1[2]);
       const date1 = new Date(year1, month1, day1, 23, 59);
       this.form.endDate = date1.toISOString().substring(0, 10);
-      this.challenge.users.sort((a, b) => b.distance - a.distance)
+      this.maleUsers = this.challenge.users.filter(user => user.male);
+      this.femaleUsers = this.challenge.users.filter(user => !user.male);
+      this.maleUsers.sort((a, b) => b.distance - a.distance)
+      this.femaleUsers.sort((a, b) => b.distance - a.distance)
     });
   }
 

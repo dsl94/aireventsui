@@ -1,6 +1,6 @@
 <app-page-title title="Detalji izazova"></app-page-title>
 <div class="row">
-  <div class="col-lg-7">
+  <div class="col-lg-4">
     <div class="card">
       <div class="card-body">
         <form class="user" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
@@ -37,30 +37,58 @@
       </div>
     </div>
   </div>
-  <div class="col-lg-5">
+  <div class="col-lg-8">
     <div class="card">
       <div class="card-body">
         <h4>Prijavljeni trkači</h4><br>
         <h6>Poslednja Strava sinhronizacija: <span class="text-primary">{{challenge.lastSync}}</span></h6><br>
-        <div class="table-responsive">
-          <table class="table header-border table-responsive-sm">
-            <thead>
-            <tr>
-              <th>Ime i prezime</th>
-              <th>Distanca</th>
-              <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let user of challenge.users">
-              <td class="{{loggedInUserId == user.id ? 'text-success' : ''}}">{{user.name}}</td>
-              <td class="{{loggedInUserId == user.id ? 'text-success' : ''}}">{{user.distance | number:'1.2-2' }} km</td>
-              <td>
+        <div class="row">
+          <div class="col-md-6">
+            <h6>Žene</h6>
+            <div class="table-responsive">
+              <table class="table header-border table-responsive-sm">
+                <thead>
+                <tr>
+                  <th>Ime i prezime</th>
+                  <th>Distanca</th>
+                  <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let user of femaleUsers">
+                  <td class="{{loggedInUserId == user.id ? 'text-success' : ''}}">{{user.name}}</td>
+                  <td class="{{loggedInUserId == user.id ? 'text-success' : ''}}">{{user.distance | number:'1.2-2' }} km</td>
+                  <td>
 
-              </td>
-            </tr>
-            </tbody>
-          </table>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <h6>Muškarci</h6>
+            <div class="table-responsive">
+              <table class="table header-border table-responsive-sm">
+                <thead>
+                <tr>
+                  <th>Ime i prezime</th>
+                  <th>Distanca</th>
+                  <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let user of maleUsers">
+                  <td class="{{loggedInUserId == user.id ? 'text-success' : ''}}">{{user.name}}</td>
+                  <td class="{{loggedInUserId == user.id ? 'text-success' : ''}}">{{user.distance | number:'1.2-2' }} km</td>
+                  <td>
+
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     </div>
