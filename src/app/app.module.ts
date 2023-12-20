@@ -8,6 +8,7 @@ import { MainComponent } from './components/main/main.component';
 import { IndexComponent } from './pages/index/index.component';
 import {RouterModule, Routes} from "@angular/router";
 import {FormsModule} from "@angular/forms";
+import { BorxloaderModule } from 'borxloader';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { HeaderComponent } from './components/header/header.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -221,6 +222,7 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
+    BorxloaderModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,

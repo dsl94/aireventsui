@@ -67,6 +67,13 @@ export class ChallengeDetailsComponent implements OnInit {
     });
   }
 
+  sync() {
+    this.challengeService.sync(this.id).subscribe(data => {
+      this.toasts.success("Sinhronizacija završena")
+      this.load();
+    });
+  }
+
   onSubmit() {
     this.challengeService.update(this.id, new ChallengeRequest(this.form.title, this.form.startDate, this.form.endDate))
       .subscribe(data => {

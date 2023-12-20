@@ -36,4 +36,8 @@ export class ChallengeService {
   noGo(id: number) {
     return this.http.put<ChallengeDetails>(this.baseUrl + '/challenge/' + id + '/no-go', null);
   }
+
+  sync(id: any) {
+    return this.http.get<ChallengeDetails>(this.baseUrl + '/challenge/' + id + "/sync");
+  }
 }
