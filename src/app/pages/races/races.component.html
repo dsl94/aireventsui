@@ -7,40 +7,45 @@
       </div>
       <div class="card-body">
         <div class="table-responsive">
-          <table class="table header-border table-responsive-sm">
-            <thead>
-            <tr>
-              <th>Naziv trke</th>
-              <th>Datum</th>
-              <th>Distance</th>
-              <th>Broj prijavljenih članova</th>
-              <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let race of races">
-              <td>
-                {{race.title}}
-              </td>
-              <td>
-                {{race.date}}
-              </td>
-              <td>
-                {{race.distances}}
-              </td>
-              <td>
-                {{race.users.length}}
-              </td>
-              <td>
-                <button *ngIf="displayGo(race)" (click)="going(race.id)" type="button" class="btn btn-success shadow btn-xs sharp"><i class="fas fa-plus"></i></button>
-                <button *ngIf="!displayGo(race)" (click)="notGoing(race.id)" type="button" class="btn btn-warning shadow btn-xs sharp"><i class="fas fa-minus"></i></button>&nbsp;
-                <a *ngIf="isAdmin" [routerLink]="['/admin/race/', race.id]" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-pencil-alt"></i></a>
-                <a *ngIf="!isAdmin" [routerLink]="['/user/race/', race.id]" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-eye"></i></a>
-                <button *ngIf="isAdmin" (click)="markForDelete(race.id)" type="button" data-bs-toggle="modal" data-bs-target="#confirm-modal" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></button>
-              </td>
-            </tr>
-            </tbody>
-          </table>
+          <div *ngIf="!loaded">
+            <h2 class="text-primary text-center">Molimo sačekajte, podaci se učitavaju <span class="animation-element">...</span></h2>
+          </div>
+          <div *ngIf="loaded">
+            <table datatable [dtOptions]="dtOptions" class="table header-border table-responsive-sm">
+              <thead>
+              <tr>
+                <th style="font-size: small">Naziv trke</th>
+                <th style="font-size: small">Datum</th>
+                <th style="font-size: small">Distance</th>
+                <th style="font-size: small">Prijavljeni članovi</th>
+                <th></th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let race of races">
+                <td>
+                  {{race.title}}
+                </td>
+                <td>
+                  {{race.date}}
+                </td>
+                <td>
+                  {{race.distances}}
+                </td>
+                <td>
+                  {{race.users.length}}
+                </td>
+                <td>
+                  <button *ngIf="displayGo(race)" (click)="going(race.id)" type="button" class="btn btn-success shadow btn-xs sharp"><i class="fas fa-plus"></i></button>
+                  <button *ngIf="!displayGo(race)" (click)="notGoing(race.id)" type="button" class="btn btn-warning shadow btn-xs sharp"><i class="fas fa-minus"></i></button>&nbsp;
+                  <a *ngIf="isAdmin" [routerLink]="['/admin/race/', race.id]" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-pencil-alt"></i></a>
+                  <a *ngIf="!isAdmin" [routerLink]="['/user/race/', race.id]" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-eye"></i></a>
+                  <button *ngIf="isAdmin" (click)="markForDelete(race.id)" type="button" data-bs-toggle="modal" data-bs-target="#confirm-modal" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>

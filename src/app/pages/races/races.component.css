@@ -1,0 +1,17 @@
+@keyframes show-hide {
+  0%, 100% {
+    visibility: visible;
+    opacity: 1;
+  }
+  50% {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+/* Apply the animation to the element */
+.animation-element {
+  width: 100px;
+  height: 100px;
+  animation: show-hide 1s infinite; /* Apply the animation */
+}

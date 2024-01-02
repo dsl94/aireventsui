@@ -48,6 +48,7 @@ import { ChallengeModalComponent } from './components/challenge-modal/challenge-
 import { AdminGuestsComponent } from './pages/admin-guests/admin-guests.component';
 import { AdminGuestsTableComponent } from './components/admin-guests-table/admin-guests-table.component';
 import { ConvertGuestModalComponent } from './components/convert-guest-modal/convert-guest-modal.component';
+import {DataTablesModule} from "angular-datatables";
 
 const routes: Routes = [
   // osnovne rute
@@ -227,6 +228,7 @@ const routes: Routes = [
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    DataTablesModule,
     ToastrModule.forRoot(),
     RouterModule.forRoot(routes),
   ],

@@ -16,10 +16,19 @@ export class RacesComponent implements OnInit{
   forDelete = -1;
 
   rawRole: string = '';
+  loaded = false;
 
   userId = -1;
 
   isAdmin = false;
+  dtOptions = {
+    ordering: false,
+    pagingType: 'numbers',
+    lengthChange: false,
+    language: {
+      "search": "Pretraga:"
+    }
+  }
 
   constructor(private raceService: RaceService, private toastr: ToastrService, private tokenService: TokenService) {
   }
@@ -36,6 +45,7 @@ export class RacesComponent implements OnInit{
   load() {
     this.raceService.getAll().subscribe(data => {
       this.races = data;
+      this.loaded = true;
     });
   }
 
