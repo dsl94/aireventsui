@@ -10,6 +10,7 @@
           <th>Telefon</th>
           <th>Veličina majice</th>
           <th>Strava ID</th>
+          <th>Poslednja prijava</th>
           <th></th>
         </tr>
         </thead>
@@ -33,6 +34,7 @@
           <td>
             {{user.stravaId}}
           </td>
+          <td>{{user.lastLoginDate != null ? user.lastLoginDate : 'Nije poznato'}}</td>
           <td>
             <button (click)="markForConvert(user.id)" type="button" data-bs-toggle="modal" data-bs-target="#convert-modal" class="btn btn-primary shadow btn-xs sharp"><i class="fa fa-user-plus"></i></button>&nbsp;
             <button (click)="markForDelete(user.id)" type="button" data-bs-toggle="modal" data-bs-target="#confirm-modal" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></button>

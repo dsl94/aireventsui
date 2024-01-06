@@ -12,6 +12,7 @@ export interface UserChallenge {
   name: string;
   distance: number;
   male: boolean;
+  perMonth: {};
 }
 
 export class ChallengeRequest {

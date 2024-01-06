@@ -1,89 +1,108 @@
 <app-page-title title="Detalji izazova"></app-page-title>
 <div class="row">
-  <div class="col-lg-4">
+  <div class="col-lg-12">
     <div class="card">
       <div class="card-body">
         <form class="user" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
           <h4>Podaci o izazovu</h4><br>
-          <div class="mb-3">
-            <label class="mb-1"><strong>Naziv izazova <app-ms></app-ms></strong></label>
-            <input type="text" class="form-control" name="title"
-                   [(ngModel)]="form.title" required #title="ngModel" [disabled]="!isAdmin" [readOnly]="!isAdmin">
-            <div class="alert alert-danger" role="alert"
-                 *ngIf="title.errors && f.submitted">
-              Naslov izazova je obavezan!
+          <div class="row">
+            <div class="col-md-4">
+              <div class="mb-3">
+                <label class="mb-1"><strong>Naziv izazova <app-ms></app-ms></strong></label>
+                <input type="text" class="form-control" name="title" [(ngModel)]="form.title" required #title="ngModel"
+                       [disabled]="!isAdmin" [readOnly]="!isAdmin">
+                <div class="alert alert-danger" role="alert" *ngIf="title.errors && f.submitted">
+                  Naslov izazova je obavezan!
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="mb-3">
+                <label class="mb-1"><strong>Datum početka <app-ms></app-ms></strong></label>
+                <input type="date" class="form-control" name="startDate" [(ngModel)]="form.startDate" #startDate="ngModel"
+                       [disabled]="!isAdmin" [readOnly]="!isAdmin" required>
+                <div class="alert alert-danger" role="alert" *ngIf="startDate.errors && f.submitted">
+                  Datum je obavezan
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="mb-3">
+                <label class="mb-1"><strong>Datum kraja <app-ms></app-ms></strong></label>
+                <input type="date" class="form-control" name="endDate" [(ngModel)]="form.endDate" #endDate="ngModel"
+                       [disabled]="!isAdmin" [readOnly]="!isAdmin" required>
+                <div class="alert alert-danger" role="alert" *ngIf="endDate.errors && f.submitted">
+                  Datum je obavezan
+                </div>
+              </div>
             </div>
           </div>
-          <div class="mb-3">
-            <label class="mb-1"><strong>Datum početka <app-ms></app-ms></strong></label>
-            <input type="date" class="form-control" name="startDate"
-                   [(ngModel)]="form.startDate"  #startDate="ngModel" [disabled]="!isAdmin" [readOnly]="!isAdmin" required>
-            <div class="alert alert-danger" role="alert"
-                 *ngIf="startDate.errors && f.submitted">
-              Datum je obavezan
+          <div class="row">
+            <div class="col-md-12" *ngIf="isAdmin">
+              <button type="submit" class="btn btn-primary">Izmeni</button>
             </div>
           </div>
-          <div class="mb-3">
-            <label class="mb-1"><strong>Datum kraja <app-ms></app-ms></strong></label>
-            <input type="date" class="form-control" name="endDate"
-                   [(ngModel)]="form.endDate"  #endDate="ngModel" [disabled]="!isAdmin" [readOnly]="!isAdmin" required>
-            <div class="alert alert-danger" role="alert"
-                 *ngIf="endDate.errors && f.submitted">
-              Datum je obavezan
-            </div>
-          </div>
-          <button *ngIf="isAdmin" type="submit" class="btn btn-primary">Izmeni</button>
         </form>
+
       </div>
     </div>
   </div>
-  <div class="col-lg-8">
-    <div class="card">
-      <div class="card-body">
-        <h4>Prijavljeni trkači</h4><br>
-        <h6>Poslednja Strava sinhronizacija: <span class="text-primary">{{challenge.lastSync}}</span> &nbsp;<button *ngIf="isAdmin" type="button" (click)="sync()" class="btn btn-outline-primary btn-sm">Sinhronizuj sada</button></h6><br>
-        <div class="row">
-          <div class="col-md-6">
-            <h6>Žene</h6>
+</div>
+<div class="row">
+  <div class="col-lg-12">
+    <h6>Poslednja Strava sinhronizacija: <span class="text-primary">{{challenge.lastSync}}</span> &nbsp;<button *ngIf="isAdmin" type="button" (click)="sync()" class="btn btn-outline-primary btn-sm">Sinhronizuj sada</button></h6><br>
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-body">
+            <h6>Žene po mesecima</h6>
             <div class="table-responsive">
               <table class="table header-border table-responsive-sm">
                 <thead>
                 <tr>
-                  <th>Ime i prezime</th>
-                  <th>Distanca</th>
-                  <th></th>
+                  <th>Ime</th>
+                  <th>Decembar</th>
+                  <th>Januar</th>
+                  <th>Februar</th>
+                  <th>Ukupno</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr *ngFor="let user of femaleUsers">
                   <td class="{{loggedInUserId == user.id ? 'text-success' : ''}}">{{user.name}}</td>
+                  <td class="{{loggedInUserId == user.id ? 'text-success' : ''}}">{{getForUserForMonth(user, 'Decembar') / 1000 | number:'1.2-2' }} km</td>
+                  <td class="{{loggedInUserId == user.id ? 'text-success' : ''}}">{{getForUserForMonth(user, 'Januar') / 1000 | number:'1.2-2' }} km</td>
+                  <td class="{{loggedInUserId == user.id ? 'text-success' : ''}}">{{getForUserForMonth(user, 'Februar') / 1000 | number:'1.2-2' }} km</td>
                   <td class="{{loggedInUserId == user.id ? 'text-success' : ''}}">{{user.distance | number:'1.2-2' }} km</td>
-                  <td>
-
-                  </td>
                 </tr>
                 </tbody>
               </table>
             </div>
           </div>
-          <div class="col-md-6">
-            <h6>Muškarci</h6>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-body">
+            <h6>Muškarci po mesecima</h6>
             <div class="table-responsive">
               <table class="table header-border table-responsive-sm">
                 <thead>
                 <tr>
-                  <th>Ime i prezime</th>
-                  <th>Distanca</th>
-                  <th></th>
+                  <th>Ime</th>
+                  <th>Decembar</th>
+                  <th>Januar</th>
+                  <th>Februar</th>
+                  <th>Ukupno</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr *ngFor="let user of maleUsers">
                   <td class="{{loggedInUserId == user.id ? 'text-success' : ''}}">{{user.name}}</td>
+                  <td class="{{loggedInUserId == user.id ? 'text-success' : ''}}">{{getForUserForMonth(user, 'Decembar') / 1000 | number:'1.2-2' }} km</td>
+                  <td class="{{loggedInUserId == user.id ? 'text-success' : ''}}">{{getForUserForMonth(user, 'Januar') / 1000 | number:'1.2-2' }} km</td>
+                  <td class="{{loggedInUserId == user.id ? 'text-success' : ''}}">{{getForUserForMonth(user, 'Februar') / 1000 | number:'1.2-2' }} km</td>
                   <td class="{{loggedInUserId == user.id ? 'text-success' : ''}}">{{user.distance | number:'1.2-2' }} km</td>
-                  <td>
-
-                  </td>
                 </tr>
                 </tbody>
               </table>

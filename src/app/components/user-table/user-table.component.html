@@ -12,12 +12,13 @@
           <th>Email</th>
           <th>Telefon</th>
           <th>Istek članarine</th>
+          <th>Poslednja prijava</th>
           <th></th>
         </tr>
         </thead>
         <tbody>
         <tr *ngFor="let user of users">
-          <td>
+          <td >
             {{user.fullName}}
           </td>
           <td>
@@ -32,6 +33,7 @@
           <td>
             <span class="text-{{getColorForDate(user.membershipUntil)}}">{{user.membershipUntil}}</span>
           </td>
+          <td>{{user.lastLoginDate != null ? user.lastLoginDate : 'Nije poznato'}}</td>
           <td>
             <a [routerLink]="['/admin/user/', user.id]" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-pencil-alt"></i></a>
             <button (click)="markForDelete(user.id)" type="button" data-bs-toggle="modal" data-bs-target="#confirm-modal" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></button>

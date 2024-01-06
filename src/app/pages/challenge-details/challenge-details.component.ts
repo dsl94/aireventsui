@@ -81,4 +81,19 @@ export class ChallengeDetailsComponent implements OnInit {
         this.toasts.success("Izazov usepšno izmenjen");
       });
   }
+
+  getForUserForMonth(user: UserChallenge, month: String) {
+    switch (month) {
+      case 'Decembar':
+        // @ts-ignore
+        return user.perMonth['DECEMBER'];
+      case 'Januar':
+        // @ts-ignore
+        return user.perMonth['JANUARY'];
+      case 'Februar':
+        // @ts-ignore
+        return user.perMonth['FEBRUARY'];
+    }
+  }
+
 }
