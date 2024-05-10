@@ -9,6 +9,15 @@
         </div>
         <div class="modal-body">
           <div class="mb-3">
+            <label class="mb-1"><strong>Tip trke <app-ms></app-ms></strong></label>
+            <select [(ngModel)]="form.type" (ngModelChange)="onTypeChange()" required #type="ngModel" class="form-control form-select">
+              <option *ngFor="let type of types" [ngValue]="type">{{type.name}}</option>
+            </select>
+            <div class="alert alert-danger" role="alert" *ngIf="type.errors && f.submitted">
+              Tip trke je obavezan!
+            </div>
+          </div>
+          <div class="mb-3">
             <label class="mb-1"><strong>Naziv trke <app-ms></app-ms></strong></label>
             <input type="text" class="form-control" name="title"
                    [(ngModel)]="form.title" required #title="ngModel">
@@ -19,11 +28,11 @@
           </div>
           <div class="mb-3">
             <label class="mb-1"><strong>Distance <app-ms></app-ms></strong></label>
-            <input type="text" class="form-control" name="email"
-                   [(ngModel)]="form.distances" required #distances="ngModel">
-            <div class="alert alert-danger" role="alert"
-                 *ngIf="distances.errors && f.submitted">
-              Distance su obavezne
+            <select [(ngModel)]="form.distances" required #distances="ngModel" class="form-control form-select">
+              <option *ngFor="let distance of form.type?.distances" [ngValue]="distance.id">{{distance.name}}</option>
+            </select>
+            <div class="alert alert-danger" role="alert" *ngIf="distances.errors && f.submitted">
+              Distance su obavezne!
             </div>
           </div>
           <div class="mb-3">

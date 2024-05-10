@@ -1,7 +1,8 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {UserService} from "../../services/user.service";
 import {ToastrService} from "ngx-toastr";
 import {RaceService} from "../../services/race.service";
+import {RaceType} from "../../dto/race-type.model";
 
 @Component({
   selector: 'app-race-modal',
@@ -10,12 +11,20 @@ import {RaceService} from "../../services/race.service";
 })
 export class RaceModalComponent {
   @Output() createdEvent = new EventEmitter();
+  @Input() types: RaceType[] = [];
   form: any = {
+    type: null,
     title: null,
     date: null,
-    distances: null,
+    distances: [],
+    city: null,
+    country: null
   };
   constructor(private raceService: RaceService, private toastr: ToastrService ) {
+  }
+
+  onTypeChange() {
+    this.form.distances = null; // Reset distances when type changes
   }
 
   onSubmit(): void {

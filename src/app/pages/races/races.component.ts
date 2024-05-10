@@ -5,6 +5,8 @@ import {ToastrService} from "ngx-toastr";
 import {RaceDetails} from "../../dto/race-details.model";
 import {RaceService} from "../../services/race.service";
 import {TokenService} from "../../services/token.service";
+import {RaceType} from "../../dto/race-type.model";
+import {RaceV2Service} from "../../services/racev2.service";
 
 @Component({
   selector: 'app-races',
@@ -12,79 +14,30 @@ import {TokenService} from "../../services/token.service";
   styleUrls: ['./races.component.css']
 })
 export class RacesComponent implements OnInit{
-  races: RaceDetails[] = []
-  forDelete = -1;
-
-  rawRole: string = '';
+  types: RaceType[] = []
   loaded = false;
+  activeTab: number = 0; // Default to the first tab
 
-  userId = -1;
-
-  isAdmin = false;
-  dtOptions = {
-    ordering: false,
-    pagingType: 'numbers',
-    lengthChange: false,
-    language: {
-      "search": "Pretraga:"
-    }
+  setActiveTab(index: number) {
+    this.activeTab = index;
   }
 
-  constructor(private raceService: RaceService, private toastr: ToastrService, private tokenService: TokenService) {
+  constructor(private raceService: RaceV2Service, private toastr: ToastrService, private tokenService: TokenService) {
   }
   ngOnInit(): void {
     let roles = this.tokenService.getUser().roles;
-    this.userId = this.tokenService.getUser().id;
-    this.rawRole = roles[0];
-    if (this.rawRole === 'ROLE_SYSTEM_ADMIN') {
-      this.isAdmin = true;
-    }
+    // this.userId = this.tokenService.getUser().id;
+    // this.rawRole = roles[0];
+    // if (this.rawRole === 'ROLE_SYSTEM_ADMIN') {
+    //   this.isAdmin = true;
+    // }
     this.load();
   }
 
   load() {
-    this.raceService.getAll().subscribe(data => {
-      this.races = data;
+    this.raceService.getRaceTypes().subscribe(data => {
+      this.types = data;
       this.loaded = true;
     });
-  }
-
-  delete() {
-    this.raceService.delete(this.forDelete).subscribe(data => {
-      this.load();
-      this.toastr.success("Trka izbrisana");
-    });
-  }
-
-  markForDelete(id: number) {
-    this.forDelete = id;
-  }
-
-  going(id: number) {
-    this.raceService.go(id).subscribe(data => {
-      this.load();
-      this.toastr.success("Upsešno ste se prijavili za trku");
-    }, error => {
-      this.toastr.error("Došlo je greške");
-    })
-  }
-
-  displayGo(race: RaceDetails) {
-    let display = true;
-    race.users.forEach(user => {
-      if (this.userId == user.id) {
-        display = false;
-      }
-    });
-    return display;
-  }
-
-  notGoing(id: number) {
-    this.raceService.noGo(id).subscribe(data => {
-      this.load();
-      this.toastr.success("Upsešno ste se odjavili sa trke");
-    }, error => {
-      this.toastr.error("Došlo je greške");
-    })
   }
 }
