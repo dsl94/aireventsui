@@ -61,18 +61,24 @@
                 <thead>
                 <tr>
                   <th>Ime</th>
-                  <th>Decembar</th>
-                  <th>Januar</th>
-                  <th>Februar</th>
+                  <th *ngIf="form.title == '2. RCN Winter Challenge'">Decembar</th>
+                  <th *ngIf="form.title == '2. RCN Winter Challenge'">Januar</th>
+                  <th *ngIf="form.title == '2. RCN Winter Challenge'">Februar</th>
+                  <th *ngIf="form.title != '2. RCN Winter Challenge'">Jun</th>
+                  <th *ngIf="form.title != '2. RCN Winter Challenge'">Jul</th>
+                  <th *ngIf="form.title != '2. RCN Winter Challenge'">Avgust</th>
                   <th>Ukupno</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr *ngFor="let user of femaleUsers">
                   <td class="{{loggedInUserId == user.id ? 'text-success' : ''}}">{{user.name}}</td>
-                  <td class="{{loggedInUserId == user.id ? 'text-success' : ''}}">{{getForUserForMonth(user, 'Decembar') / 1000 | number:'1.2-2' }} km</td>
-                  <td class="{{loggedInUserId == user.id ? 'text-success' : ''}}">{{getForUserForMonth(user, 'Januar') / 1000 | number:'1.2-2' }} km</td>
-                  <td class="{{loggedInUserId == user.id ? 'text-success' : ''}}">{{getForUserForMonth(user, 'Februar') / 1000 | number:'1.2-2' }} km</td>
+                  <td *ngIf="form.title == '2. RCN Winter Challenge'" class="{{loggedInUserId == user.id ? 'text-success' : ''}}">{{getForUserForMonth(user, 'Decembar') / 1000 | number:'1.2-2' }} km</td>
+                  <td *ngIf="form.title == '2. RCN Winter Challenge'" class="{{loggedInUserId == user.id ? 'text-success' : ''}}">{{getForUserForMonth(user, 'Januar') / 1000 | number:'1.2-2' }} km</td>
+                  <td *ngIf="form.title == '2. RCN Winter Challenge'" class="{{loggedInUserId == user.id ? 'text-success' : ''}}">{{getForUserForMonth(user, 'Februar') / 1000 | number:'1.2-2' }} km</td>
+                  <td *ngIf="form.title != '2. RCN Winter Challenge'" class="{{loggedInUserId == user.id ? 'text-success' : ''}}">{{getForUserForMonth(user, 'Jun') / 1000 | number:'1.2-2' }} km</td>
+                  <td *ngIf="form.title != '2. RCN Winter Challenge'" class="{{loggedInUserId == user.id ? 'text-success' : ''}}">{{getForUserForMonth(user, 'Jul') / 1000 | number:'1.2-2' }} km</td>
+                  <td *ngIf="form.title != '2. RCN Winter Challenge'" class="{{loggedInUserId == user.id ? 'text-success' : ''}}">{{getForUserForMonth(user, 'Avgust') / 1000 | number:'1.2-2' }} km</td>
                   <td class="{{loggedInUserId == user.id ? 'text-success' : ''}}">{{user.distance | number:'1.2-2' }} km</td>
                 </tr>
                 </tbody>
@@ -90,18 +96,24 @@
                 <thead>
                 <tr>
                   <th>Ime</th>
-                  <th>Decembar</th>
-                  <th>Januar</th>
-                  <th>Februar</th>
+                  <th *ngIf="form.title == '2. RCN Winter Challenge'">Decembar</th>
+                  <th *ngIf="form.title == '2. RCN Winter Challenge'">Januar</th>
+                  <th *ngIf="form.title == '2. RCN Winter Challenge'">Februar</th>
+                  <th *ngIf="form.title != '2. RCN Winter Challenge'">Jun</th>
+                  <th *ngIf="form.title != '2. RCN Winter Challenge'">Jul</th>
+                  <th *ngIf="form.title != '2. RCN Winter Challenge'">Avgust</th>
                   <th>Ukupno</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr *ngFor="let user of maleUsers">
                   <td class="{{loggedInUserId == user.id ? 'text-success' : ''}}">{{user.name}}</td>
-                  <td class="{{loggedInUserId == user.id ? 'text-success' : ''}}">{{getForUserForMonth(user, 'Decembar') / 1000 | number:'1.2-2' }} km</td>
-                  <td class="{{loggedInUserId == user.id ? 'text-success' : ''}}">{{getForUserForMonth(user, 'Januar') / 1000 | number:'1.2-2' }} km</td>
-                  <td class="{{loggedInUserId == user.id ? 'text-success' : ''}}">{{getForUserForMonth(user, 'Februar') / 1000 | number:'1.2-2' }} km</td>
+                  <td *ngIf="form.title == '2. RCN Winter Challenge'" class="{{loggedInUserId == user.id ? 'text-success' : ''}}">{{getForUserForMonth(user, 'Decembar') / 1000 | number:'1.2-2' }} km</td>
+                  <td *ngIf="form.title == '2. RCN Winter Challenge'" class="{{loggedInUserId == user.id ? 'text-success' : ''}}">{{getForUserForMonth(user, 'Januar') / 1000 | number:'1.2-2' }} km</td>
+                  <td *ngIf="form.title == '2. RCN Winter Challenge'" class="{{loggedInUserId == user.id ? 'text-success' : ''}}">{{getForUserForMonth(user, 'Februar') / 1000 | number:'1.2-2' }} km</td>
+                  <td *ngIf="form.title != '2. RCN Winter Challenge'" class="{{loggedInUserId == user.id ? 'text-success' : ''}}">{{getForUserForMonth(user, 'Jun') / 1000 | number:'1.2-2' }} km</td>
+                  <td *ngIf="form.title != '2. RCN Winter Challenge'" class="{{loggedInUserId == user.id ? 'text-success' : ''}}">{{getForUserForMonth(user, 'Jul') / 1000 | number:'1.2-2' }} km</td>
+                  <td *ngIf="form.title != '2. RCN Winter Challenge'" class="{{loggedInUserId == user.id ? 'text-success' : ''}}">{{getForUserForMonth(user, 'Avgust') / 1000 | number:'1.2-2' }} km</td>
                   <td class="{{loggedInUserId == user.id ? 'text-success' : ''}}">{{user.distance | number:'1.2-2' }} km</td>
                 </tr>
                 </tbody>

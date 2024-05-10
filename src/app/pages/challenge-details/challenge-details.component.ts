@@ -93,6 +93,15 @@ export class ChallengeDetailsComponent implements OnInit {
       case 'Februar':
         // @ts-ignore
         return user.perMonth['FEBRUARY'];
+      case 'Jun':
+        // @ts-ignore
+        return user.perMonth['JUN'];
+      case 'Jul':
+        // @ts-ignore
+        return user.perMonth['JULY'];
+      case 'Avgust':
+        // @ts-ignore
+        return user.perMonth['AUGUST'];
     }
   }
 
