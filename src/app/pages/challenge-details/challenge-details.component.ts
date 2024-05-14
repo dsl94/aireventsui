@@ -86,6 +86,7 @@ export class ChallengeDetailsComponent implements OnInit {
     if (user.perMonth == null) {
       return 0;
     }
+    
     switch (month) {
       case 'Decembar':
         // @ts-ignore
