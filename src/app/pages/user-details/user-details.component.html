@@ -49,6 +49,11 @@
             <input type="date" class="form-control" name="membershipUntil"
                    [(ngModel)]="form.membershipUntil"  #membershipUntil="ngModel">
           </div>
+          <div class="mb-3">
+            <label class="mb-1"><strong>Lekarski pregled važi do</strong></label>
+            <input type="date" class="form-control" name="medicalUntil"
+                   [(ngModel)]="form.medicalUntil"  #medicalUntil="ngModel">
+          </div>
           <button type="submit" class="btn btn-primary">Izmeni</button>
         </form>
       </div>

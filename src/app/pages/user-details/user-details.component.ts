@@ -17,6 +17,7 @@ export class UserDetailsComponent implements OnInit {
   form: any = {
     fullName: null,
     membershipUntil: null,
+    medicalUntil: null,
     phone: null,
     info: null,
     shirtSize: null,
@@ -44,11 +45,18 @@ export class UserDetailsComponent implements OnInit {
       const year = parseInt(parts[2]);
       const date = new Date(year, month, day, 23, 59);
       this.form.membershipUntil = date.toISOString().substring(0, 10);
+
+      const parts1 = this.user.medicalUntil.split('-');
+      const day1 = parseInt(parts1[0]);
+      const month1 = parseInt(parts1[1]) - 1; // Month is 0-based (0 for January, 1 for February, etc.)
+      const year1 = parseInt(parts1[2]);
+      const date1 = new Date(year1, month1, day1, 23, 59);
+      this.form.medicalUntil = date1.toISOString().substring(0, 10);
     });
   }
 
   onSubmit() {
-    this.userService.updateUser(this.id, this.form.fullName, this.form.membershipUntil, this.form.shirtSize, this.form.phone, this.form.info).subscribe(data => {
+    this.userService.updateUser(this.id, this.form.fullName, this.form.membershipUntil, this.form.shirtSize, this.form.phone, this.form.info, this.form.medicalUntil).subscribe(data => {
       this.load();
       this.toasts.success("Član uspešno izmenjen")
     });

@@ -33,8 +33,8 @@ export class UserService {
     return this.http.get<UserDetails>(this.baseUrl + '/sys-admin/user/' + id);
   }
 
-  updateUser(id: any, fullName: string, membershipUntil: any, shirtSize: any, phone: any, info: any) {
-    return this.http.put<UserDetails>(this.baseUrl + '/sys-admin/user/' + id, {fullName, membershipUntil, shirtSize, phone, info});
+  updateUser(id: any, fullName: string, membershipUntil: any, shirtSize: any, phone: any, info: any, medicalUntil: any) {
+    return this.http.put<UserDetails>(this.baseUrl + '/sys-admin/user/' + id, {fullName, membershipUntil, shirtSize, phone, info, medicalUntil});
   }
 
   convertGuest(id: number, email: string, membershipUntil: any) {

@@ -14,6 +14,7 @@ export interface UserDetails {
   createdDate: string;
   updatedDate: string;
   membershipUntil: string;
+  medicalUntil: string;
   firstLoginDate: string;
   lastLoginDate: string;
   stravaLogin: boolean;

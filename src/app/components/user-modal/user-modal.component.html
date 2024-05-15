@@ -62,6 +62,11 @@
           <input type="date" class="form-control" name="membershipUntil"
                  [(ngModel)]="form.membershipUntil"  #membershipUntil="ngModel">
         </div>
+        <div class="mb-3">
+          <label class="mb-1"><strong>Lekarski pregled važi do</strong></label>
+          <input type="date" class="form-control" name="medicalUntil"
+                 [(ngModel)]="form.medicalUntil"  #medicalUntil="ngModel">
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger light" id="closeMappingModal" data-bs-dismiss="modal">Zatvori</button>

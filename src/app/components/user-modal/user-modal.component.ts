@@ -17,6 +17,7 @@ export class UserModalComponent {
     phone: null,
     info: null,
     membershipUntil: null,
+    medicalUntil: null,
   };
   constructor(private userService: UserService, private toastr: ToastrService ) {
   }
