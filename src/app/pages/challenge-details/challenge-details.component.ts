@@ -86,7 +86,7 @@ export class ChallengeDetailsComponent implements OnInit {
     if (user.perMonth == null) {
       return 0;
     }
-    
+
     switch (month) {
       case 'Decembar':
         // @ts-ignore
@@ -99,7 +99,7 @@ export class ChallengeDetailsComponent implements OnInit {
         return user.perMonth['FEBRUARY'];
       case 'Jun':
         // @ts-ignore
-        return user.perMonth['JUN'];
+        return user.perMonth['JUNE'];
       case 'Jul':
         // @ts-ignore
         return user.perMonth['JULY'];
