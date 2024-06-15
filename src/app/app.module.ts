@@ -49,12 +49,14 @@ import { AdminGuestsComponent } from './pages/admin-guests/admin-guests.componen
 import { AdminGuestsTableComponent } from './components/admin-guests-table/admin-guests-table.component';
 import { ConvertGuestModalComponent } from './components/convert-guest-modal/convert-guest-modal.component';
 import {DataTablesModule} from "angular-datatables";
+import { PublicChallengeComponent } from './pages/public-challenge/public-challenge.component';
 
 const routes: Routes = [
   // osnovne rute
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'letnji-izazov', component: PublicChallengeComponent },
   {
     path: 'admin',
     component: IndexComponent,
@@ -220,6 +222,7 @@ const routes: Routes = [
     AdminGuestsComponent,
     AdminGuestsTableComponent,
     ConvertGuestModalComponent,
+    PublicChallengeComponent,
   ],
   imports: [
     BrowserModule,

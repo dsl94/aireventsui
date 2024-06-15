@@ -1,0 +1,76 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-body">
+            <h6>Žene po mesecima</h6>
+            <div class="table-responsive">
+              <table class="table header-border table-responsive-sm">
+                <thead>
+                <tr>
+                  <th>Ime</th>
+                  <th *ngIf="challenge?.title == '2. RCN Winter Challenge'">Decembar</th>
+                  <th *ngIf="challenge?.title == '2. RCN Winter Challenge'">Januar</th>
+                  <th *ngIf="challenge?.title == '2. RCN Winter Challenge'">Februar</th>
+                  <th *ngIf="challenge?.title != '2. RCN Winter Challenge'">Jun</th>
+                  <th *ngIf="challenge?.title != '2. RCN Winter Challenge'">Jul</th>
+                  <th *ngIf="challenge?.title != '2. RCN Winter Challenge'">Avgust</th>
+                  <th>Ukupno</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let user of femaleUsers">
+                  <td >{{user.name}}</td>
+                  <td *ngIf="challenge?.title == '2. RCN Winter Challenge'">{{getForUserForMonth(user, 'Decembar') / 1000 | number:'1.2-2' }} km</td>
+                  <td *ngIf="challenge?.title == '2. RCN Winter Challenge'">{{getForUserForMonth(user, 'Januar') / 1000 | number:'1.2-2' }} km</td>
+                  <td *ngIf="challenge?.title == '2. RCN Winter Challenge'" >{{getForUserForMonth(user, 'Februar') / 1000 | number:'1.2-2' }} km</td>
+                  <td *ngIf="challenge?.title != '2. RCN Winter Challenge'" >{{getForUserForMonth(user, 'Jun') / 1000 | number:'1.2-2' }} km</td>
+                  <td *ngIf="challenge?.title != '2. RCN Winter Challenge'">{{getForUserForMonth(user, 'Jul') / 1000 | number:'1.2-2' }} km</td>
+                  <td *ngIf="challenge?.title != '2. RCN Winter Challenge'">{{getForUserForMonth(user, 'Avgust') / 1000 | number:'1.2-2' }} km</td>
+                  <td>{{user.distance | number:'1.2-2' }} km</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-body">
+            <h6>Muškarci po mesecima</h6>
+            <div class="table-responsive">
+              <table class="table header-border table-responsive-sm">
+                <thead>
+                <tr>
+                  <th>Ime</th>
+                  <th *ngIf="challenge?.title == '2. RCN Winter Challenge'">Decembar</th>
+                  <th *ngIf="challenge?.title == '2. RCN Winter Challenge'">Januar</th>
+                  <th *ngIf="challenge?.title == '2. RCN Winter Challenge'">Februar</th>
+                  <th *ngIf="challenge?.title != '2. RCN Winter Challenge'">Jun</th>
+                  <th *ngIf="challenge?.title != '2. RCN Winter Challenge'">Jul</th>
+                  <th *ngIf="challenge?.title != '2. RCN Winter Challenge'">Avgust</th>
+                  <th>Ukupno</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let user of maleUsers">
+                  <td >{{user.name}}</td>
+                  <td *ngIf="challenge?.title == '2. RCN Winter Challenge'" >{{getForUserForMonth(user, 'Decembar') / 1000 | number:'1.2-2' }} km</td>
+                  <td *ngIf="challenge?.title == '2. RCN Winter Challenge'" >{{getForUserForMonth(user, 'Januar') / 1000 | number:'1.2-2' }} km</td>
+                  <td *ngIf="challenge?.title == '2. RCN Winter Challenge'" >{{getForUserForMonth(user, 'Februar') / 1000 | number:'1.2-2' }} km</td>
+                  <td *ngIf="challenge?.title != '2. RCN Winter Challenge'" >{{getForUserForMonth(user, 'Jun') / 1000 | number:'1.2-2' }} km</td>
+                  <td *ngIf="challenge?.title != '2. RCN Winter Challenge'" >{{getForUserForMonth(user, 'Jul') / 1000 | number:'1.2-2' }} km</td>
+                  <td *ngIf="challenge?.title != '2. RCN Winter Challenge'" >{{getForUserForMonth(user, 'Avgust') / 1000 | number:'1.2-2' }} km</td>
+                  <td >{{user.distance | number:'1.2-2' }} km</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
