@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ChallengeService} from "../../services/challenge.service";
 import {TokenService} from "../../services/token.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
 import {ChallengeDetails, UserChallenge} from "../../dto/challenge.model";
 
@@ -15,17 +15,31 @@ export class PublicChallengeComponent implements OnInit {
   challenge: ChallengeDetails | null = null;
   maleUsers: UserChallenge[] = []
   femaleUsers: UserChallenge[] = []
+  filter = null;
+  id = 278;
 
-  constructor(private challengeService: ChallengeService) {
+  constructor(private challengeService: ChallengeService, private activatedRoute: ActivatedRoute,
+              private router: Router) {
 
   }
 
   ngOnInit(): void {
+    const param = this.activatedRoute.snapshot.queryParamMap.get('filter');
+    if (param == 'man' || param == 'woman') {
+      // @ts-ignore
+      this.filter = param;
+    } else {
+      this.filter = null;
+    }
+
+    if (this.router.url.includes('zimski')) {
+      this.id = 412;
+    }
     this.load();
   }
 
   load() {
-    this.challengeService.get(278).subscribe(data => {
+    this.challengeService.get(this.id).subscribe(data => {
       this.challenge = data;
       this.maleUsers = this.challenge.users.filter(user => user.male);
       this.femaleUsers = this.challenge.users.filter(user => !user.male);

@@ -57,6 +57,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'letnji-izazov', component: PublicChallengeComponent },
+  { path: 'zimski-izazov', component: PublicChallengeComponent },
   {
     path: 'admin',
     component: IndexComponent,
