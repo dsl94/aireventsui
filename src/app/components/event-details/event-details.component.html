@@ -1,0 +1,77 @@
+<app-page-title title="Detalji događaja"></app-page-title>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-body">
+        <form class="user" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+          <h4>Podaci o događaju</h4><br>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="mb-3">
+                <label class="mb-1"><strong>Naziv događaja <app-ms></app-ms></strong></label>
+                <input type="text" class="form-control" name="title" [(ngModel)]="form.title" required #title="ngModel"
+                       [disabled]="!isAdmin" [readOnly]="!isAdmin">
+                <div class="alert alert-danger" role="alert" *ngIf="title.errors && f.submitted">
+                  Naziv dogadjaja je obavezan!
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="mb-3">
+                <label class="mb-1"><strong>Datum <app-ms></app-ms></strong></label>
+                <input type="date" class="form-control" name="startDate" [(ngModel)]="form.startDate" #startDate="ngModel"
+                       [disabled]="!isAdmin" [readOnly]="!isAdmin" required>
+                <div class="alert alert-danger" role="alert" *ngIf="startDate.errors && f.submitted">
+                  Datum je obavezan
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12" *ngIf="isAdmin">
+              <button type="submit" class="btn btn-primary">Izmeni</button>
+            </div>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <h6>Prijavljeni trkači</h6>
+            <div class="table-responsive">
+              <table class="table header-border table-responsive-sm">
+                <thead>
+                <tr>
+                  <th>Ime</th>
+                  <th>Distanca</th>
+                  <th *ngIf="isAdmin">Plaćeno</th>
+                  <th *ngIf="isAdmin"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let user of event.users">
+                  <td class="{{loggedInUserId == user.id ? 'text-success' : ''}}">{{user.name}}</td>
+                  <td class="{{loggedInUserId == user.id ? 'text-success' : ''}}">{{user.distance | number:'1.2-2' }} km</td>
+                  <td *ngIf="isAdmin">
+                    <span class="badge badge-{{user.paid ? 'success' : 'danger'}}">{{user.paid ? 'DA' : 'NE'}}</span>
+                  </td>
+                  <td *ngIf="isAdmin">
+                    <button *ngIf="!user.paid" (click)="pay(user.eventId)" type="button" class="btn btn-success shadow btn-xs sharp"><i class="fas fa-money-bill"></i></button>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

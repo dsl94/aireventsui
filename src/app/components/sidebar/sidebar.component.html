@@ -57,6 +57,11 @@
         <span class="nav-text">Izazovi</span>
       </a>
       </li>
+      <li *ngIf="rawRole=='ROLE_SYSTEM_ADMIN'" routerLinkActive="active"><a [routerLink]="['/admin/events']" aria-expanded="false">
+        <i class="fa fa-calendar"></i>
+        <span class="nav-text">Događaji</span>
+      </a>
+      </li>
       <li *ngIf="rawRole=='ROLE_SYSTEM_ADMIN'" routerLinkActive="active"><a [routerLink]="['/admin/race-reports']" aria-expanded="false">
         <i class="fa fa-file"></i>
         <span class="nav-text">Izveštaji sa trka</span>
@@ -70,9 +75,18 @@
         <i class="fa fa-star"></i>
         <span class="nav-text">Izazovi</span>
       </a>
+      <li *ngIf="rawRole=='ROLE_USER'" routerLinkActive="active"><a [routerLink]="['/user/events']" aria-expanded="false">
+        <i class="fa fa-calendar"></i>
+        <span class="nav-text">Događaji</span>
+      </a>
+      </li>
       <li *ngIf="rawRole=='ROLE_GUEST'" routerLinkActive="active"><a [routerLink]="['/guest/challenges']" aria-expanded="false">
         <i class="fa fa-star"></i>
         <span class="nav-text">Izazovi</span>
+      </a>
+      <li *ngIf="rawRole=='ROLE_GUEST'" routerLinkActive="active"><a [routerLink]="['/guest/events']" aria-expanded="false">
+        <i class="fa fa-calendar"></i>
+        <span class="nav-text">Događaji</span>
       </a>
       </li>
       <li *ngIf="rawRole=='ROLE_USER'" routerLinkActive="active"><a [routerLink]="['/user/race-reports']" aria-expanded="false">
@@ -109,10 +123,10 @@
       <p>Platforme za ljubitelje sporta</p>
     </div>
     <div class="copyright">
-      <p><strong>RCN</strong> © 2023 All Rights Reserved</p>
+      <p><strong>RCN</strong> © 2024 All Rights Reserved</p>
       <p class="fs-12">Made with <span class="heart"></span> by nemanja</p>
-      <p class="fs-12">Version 1.0.8</p>
-      <p class="fs-12">Last update: 14/05/2024</p>
+      <p class="fs-12">Version 1.1.0</p>
+      <p class="fs-12">Last update: 07/12/2024</p>
     </div>
   </div>
 </div>

@@ -1,0 +1,49 @@
+<app-page-title title="Događaji"></app-page-title>
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-header" *ngIf="isAdmin">
+        <button type="button" data-bs-toggle="modal" data-bs-target="#event-modal" class="btn btn-primary"><span><i class="fas fa-plus-circle"></i></span> Kreiraj događaj</button>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table header-border table-responsive-sm">
+            <thead>
+            <tr>
+              <th>Naziv događaja</th>
+              <th>Datum</th>
+              <th>Broj prijavljenih trkača</th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let event of events">
+              <td>
+                {{event.title}}
+              </td>
+              <td>
+                {{event.startDate}}
+              </td>
+              <td>
+                {{event.users.length}}
+              </td>
+              <td>
+                <button *ngIf="displayGo(event)" (click)="markForGoing(event.id)" type="button" data-bs-toggle="modal" data-bs-target="#event-go-modal" class="btn btn-success shadow btn-xs sharp"><i class="fas fa-plus"></i></button>
+                <button *ngIf="!displayGo(event)" type="button" class="btn btn-warning shadow btn-xs sharp"><i class="fas fa-minus"></i></button>&nbsp;
+                <a *ngIf="isAdmin" [routerLink]="['/admin/event/', event.id]" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-pencil-alt"></i></a>
+                <a *ngIf="!isAdmin && !isGuest" [routerLink]="['/user/event/', event.id]" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-eye"></i></a>
+                <a *ngIf="isGuest" [routerLink]="['/guest/event/', event.id]" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-eye"></i></a>
+                <button *ngIf="isAdmin" (click)="markForDelete(event.id)" type="button" data-bs-toggle="modal" data-bs-target="#confirm-modal" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <app-event-modal (createdEvent)="load()"></app-event-modal>
+    <app-event-go-modal [goingEventId]="forGoing" (goingEvent)="load()"></app-event-go-modal>
+    <app-confirm-modal (confirmEvent)="delete()"></app-confirm-modal>
+  </div>
+</div>

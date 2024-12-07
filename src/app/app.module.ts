@@ -50,6 +50,10 @@ import { AdminGuestsTableComponent } from './components/admin-guests-table/admin
 import { ConvertGuestModalComponent } from './components/convert-guest-modal/convert-guest-modal.component';
 import {DataTablesModule} from "angular-datatables";
 import { PublicChallengeComponent } from './pages/public-challenge/public-challenge.component';
+import { EventsComponent } from './pages/events/events.component';
+import { EventModalComponent } from './components/event-modal/event-modal.component';
+import { EventDetailsComponent } from './components/event-details/event-details.component';
+import { EventGoModalComponent } from './components/event-go-modal/event-go-modal.component';
 
 const routes: Routes = [
   // osnovne rute
@@ -104,6 +108,14 @@ const routes: Routes = [
         path: 'challenge/:id', // child route path
         component: ChallengeDetailsComponent, // child route component that the router renders
       },
+      {
+        path: 'events', // child route path
+        component: EventsComponent, // child route component that the router renders
+      },
+      {
+        path: 'event/:id', // child route path
+        component: EventDetailsComponent, // child route component that the router renders
+      },
       // {
       //   path: 'aircrafts', // child route path
       //   component: AircraftListComponent, // child route component that the router renders
@@ -148,6 +160,14 @@ const routes: Routes = [
         path: 'challenge/:id', // child route path
         component: ChallengeDetailsComponent, // child route component that the router renders
       },
+      {
+        path: 'events', // child route path
+        component: EventsComponent, // child route component that the router renders
+      },
+      {
+        path: 'event/:id', // child route path
+        component: EventDetailsComponent, // child route component that the router renders
+      },
       ]
   },
   {
@@ -179,6 +199,14 @@ const routes: Routes = [
       {
         path: 'challenge/:id', // child route path
         component: ChallengeDetailsComponent, // child route component that the router renders
+      },
+      {
+        path: 'events', // child route path
+        component: EventsComponent, // child route component that the router renders
+      },
+      {
+        path: 'event/:id', // child route path
+        component: EventDetailsComponent, // child route component that the router renders
       },
     ],
   },
@@ -224,6 +252,10 @@ const routes: Routes = [
     AdminGuestsTableComponent,
     ConvertGuestModalComponent,
     PublicChallengeComponent,
+    EventsComponent,
+    EventModalComponent,
+    EventDetailsComponent,
+    EventGoModalComponent,
   ],
   imports: [
     BrowserModule,
