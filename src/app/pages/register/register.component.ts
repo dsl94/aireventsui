@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {AuthService} from "../../services/auth.service";
 import {Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
-import {Register} from "../../dto/register.model";
+import {Register, RegisterGuest} from "../../dto/register.model";
 
 @Component({
   selector: 'app-register',
@@ -14,9 +14,6 @@ export class RegisterComponent {
     email: null,
     fullName: null,
     password: null,
-    vatsimId: null,
-    ivaoId: null,
-    posconId: null,
   };
   registerFailed = false;
   errorMessage = '';
@@ -24,17 +21,14 @@ export class RegisterComponent {
   constructor(private authService: AuthService, private router: Router, private toastr: ToastrService) { }
 
   onSubmit() {
-    const register = new Register(
+    const register = new RegisterGuest(
       this.form.email,
       this.form.fullName,
       this.form.password,
-      this.form.vatsimId,
-      this.form.ivaoId,
-      this.form.posconId
     );
-    this.authService.register(register).subscribe((data) => {
-        this.toastr.success('Registration successful')
-        // this.router.navigate(['/login']);
+    this.authService.registerGuest(register).subscribe((data) => {
+        this.toastr.success('Registracija usepšna, prijavit se')
+        this.router.navigate(['/login']);
       },
       error => {
         this.toastr.error(error.error.message)

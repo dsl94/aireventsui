@@ -1,6 +1,6 @@
 import {Inject, Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Register} from "../dto/register.model";
+import {Register, RegisterGuest} from "../dto/register.model";
 import {Observable} from "rxjs";
 import {TokenService} from "./token.service";
 
@@ -101,5 +101,9 @@ export class AuthService {
 
   register(register: Register) {
     return this.http.post(this.baseUrl + '/auth/register', register);
+  }
+
+  registerGuest(register: RegisterGuest) {
+    return this.http.post(this.baseUrl + '/auth/register-guest', register);
   }
 }

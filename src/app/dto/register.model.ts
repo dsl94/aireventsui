@@ -16,3 +16,16 @@ export class Register {
     this.posconId = posconId;
   }
 }
+
+export class RegisterGuest {
+  email: string;
+  fullName: string;
+  password: string;
+
+
+  constructor(email: string, fullName: string, password: string) {
+    this.email = email;
+    this.fullName = fullName;
+    this.password = password;
+  }
+}
