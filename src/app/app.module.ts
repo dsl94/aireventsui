@@ -54,6 +54,7 @@ import { EventsComponent } from './pages/events/events.component';
 import { EventModalComponent } from './components/event-modal/event-modal.component';
 import { EventDetailsComponent } from './components/event-details/event-details.component';
 import { EventGoModalComponent } from './components/event-go-modal/event-go-modal.component';
+import { ChangeDistanceModalComponent } from './components/change-distance-modal/change-distance-modal.component';
 
 const routes: Routes = [
   // osnovne rute
@@ -256,6 +257,7 @@ const routes: Routes = [
     EventModalComponent,
     EventDetailsComponent,
     EventGoModalComponent,
+    ChangeDistanceModalComponent,
   ],
   imports: [
     BrowserModule,

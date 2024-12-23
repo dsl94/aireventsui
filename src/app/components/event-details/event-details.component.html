@@ -64,6 +64,7 @@
                   </td>
                   <td *ngIf="isAdmin">
                     <button *ngIf="!user.paid" (click)="pay(user.eventId)" type="button" class="btn btn-success shadow btn-xs sharp"><i class="fas fa-money-bill"></i></button>
+                    <button *ngIf="loggedInUserId == user.id" (click)="selectId(user.eventId)" type="button" data-bs-toggle="modal" data-bs-target="#event-change-modal" class="btn btn-warning shadow btn-xs sharp"><i class="fas fa-pen"></i></button>
                   </td>
                 </tr>
                 </tbody>
@@ -75,3 +76,4 @@
     </div>
   </div>
 </div>
+<app-change-distance-modal [id]="selectedId" (distanceChanged)="load()"></app-change-distance-modal>

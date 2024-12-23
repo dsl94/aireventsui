@@ -39,4 +39,8 @@ export class EventService {
   pay(id: number) {
     return this.http.post<EventDetails>(this.baseUrl + '/event/' + id + '/paid', null);
   }
+
+  changeDistance(id: number, distance: number) {
+    return this.http.post(this.baseUrl + '/event/' + id + '/distance/' + distance, null);
+  }
 }

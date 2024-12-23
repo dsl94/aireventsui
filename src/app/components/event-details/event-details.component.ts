@@ -19,6 +19,7 @@ export class EventDetailsComponent implements OnInit {
   rawRole: string = '';
   isAdmin = false;
   loggedInUserId = -1;
+  selectedId = -1;
 
   form: any = {
     title: null,
@@ -67,5 +68,9 @@ export class EventDetailsComponent implements OnInit {
         this.load();
         this.toasts.success("Potvrđena uplata za korisnika");
       });
+  }
+
+  selectId(id: number) {
+    this.selectedId = id;
   }
 }
