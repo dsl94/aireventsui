@@ -52,7 +52,7 @@
                   <th>Ime</th>
                   <th>Distanca</th>
                   <th *ngIf="isAdmin">Plaćeno</th>
-                  <th *ngIf="isAdmin"></th>
+                  <th></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -62,8 +62,8 @@
                   <td *ngIf="isAdmin">
                     <span class="badge badge-{{user.paid ? 'success' : 'danger'}}">{{user.paid ? 'DA' : 'NE'}}</span>
                   </td>
-                  <td *ngIf="isAdmin">
-                    <button *ngIf="!user.paid" (click)="pay(user.eventId)" type="button" class="btn btn-success shadow btn-xs sharp"><i class="fas fa-money-bill"></i></button>
+                  <td>
+                    <button *ngIf="isAdmin && !user.paid" (click)="pay(user.eventId)" type="button" class="btn btn-success shadow btn-xs sharp"><i class="fas fa-money-bill"></i></button>
                     <button *ngIf="loggedInUserId == user.id" (click)="selectId(user.eventId)" type="button" data-bs-toggle="modal" data-bs-target="#event-change-modal" class="btn btn-warning shadow btn-xs sharp"><i class="fas fa-pen"></i></button>
                   </td>
                 </tr>

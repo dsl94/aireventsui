@@ -1,0 +1,122 @@
+<app-page-title title="Prodavnica"></app-page-title>
+
+<div class="container my-4">
+  <!-- Tabs Navigation -->
+  <ul class="nav nav-tabs" id="shopOrdersTabs" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button
+        class="nav-link active"
+        id="shop-tab"
+        data-bs-toggle="tab"
+        data-bs-target="#shop"
+        type="button"
+        role="tab"
+        aria-controls="shop"
+        aria-selected="true">
+        Prodavnica
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button
+        class="nav-link"
+        id="orders-tab"
+        data-bs-toggle="tab"
+        data-bs-target="#orders"
+        type="button"
+        role="tab"
+        aria-controls="orders"
+        aria-selected="false">
+        Porudžbine
+      </button>
+    </li>
+  </ul>
+
+  <!-- Tabs Content -->
+  <div class="tab-content" id="shopOrdersTabsContent">
+    <!-- Shop Tab -->
+    <div
+      class="tab-pane fade show active"
+      id="shop"
+      role="tabpanel"
+      aria-labelledby="shop-tab">
+      <!-- Shop Content -->
+      <div class="row mb-4">
+        <div class="col-lg-12 mt-2" *ngIf="isAdmin">
+          <button
+            type="button"
+            data-bs-toggle="modal"
+            data-bs-target="#shop-modal"
+            class="btn btn-primary"
+          >
+            <i class="fas fa-plus-circle me-2"></i> Dodaj
+          </button>
+        </div>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4" *ngFor="let item of items">
+          <app-shop-item [item]="item"></app-shop-item>
+        </div>
+      </div>
+    </div>
+
+    <!-- Orders Tab -->
+    <div
+      class="tab-pane fade"
+      id="orders"
+      role="tabpanel"
+      aria-labelledby="orders-tab">
+      <!-- Orders Content -->
+      <div class="table-responsive">
+        <table class="table table-sm table-bordered table-hover align-middle">
+          <thead class="table-light text-center">
+          <tr>
+            <th>Korisnik</th>
+            <th>Email</th>
+            <th>Telefon</th>
+            <th>Proizvod</th>
+            <th>Pol</th>
+            <th>Veličina</th>
+            <th>Cena/kom</th>
+            <th>Količina</th>
+            <th>Ukupno</th>
+            <th>Status</th>
+            <th *ngIf="isAdmin">Akcija</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let order of orders" class="text-center">
+            <td>{{ order.user.name }}</td>
+            <td>{{ order.user.email }}</td>
+            <td>{{ order.user.phone }}</td>
+            <td>{{ order.item.title }}</td>
+            <td>{{ order.selectedGender }}</td>
+            <td>{{ order.selectedSize }}</td>
+            <td>{{ order.item.price }}</td>
+            <td>{{ order.quantity }}</td>
+            <td>{{ order.quantity * order.item.price }}</td>
+            <td>
+            <span
+              [ngClass]="{
+                'badge bg-warning': order.status === 'CREATED',
+                'badge bg-success': order.status === 'PROCESSED',
+                'badge bg-danger': order.status === 'REJECTED'
+              }"
+            >
+              {{ loadName(order.status) }}
+            </span>
+            </td>
+            <td *ngIf="isAdmin">
+              <button class="btn btn-sm btn-primary" type="button" (click)="selectId(order.id)" data-bs-toggle="modal" data-bs-target="#order-modal" >
+                Promeni
+              </button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+<app-shop-modal (createdEvent)="load()"></app-shop-modal>
+<app-order-modal [id]="selectedId" (orderChanged)="load()"></app-order-modal>

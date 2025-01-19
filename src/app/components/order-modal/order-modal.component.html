@@ -1,0 +1,32 @@
+<div class="modal fade" id="order-modal">
+  <div class="modal-dialog" role="document">
+    <form class="user" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Promena statusa</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal">
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label class="mb-1"><strong>Izaberite status <app-ms></app-ms></strong></label>
+            <select class="form-control" name="gender"
+                    [(ngModel)]="form.status"  #status="ngModel">
+              <option value="CREATED">Kreirana</option>
+              <option value="PROCESSED">Obrađuje se</option>
+              <option value="REJECTED">Stornirana</option>
+            </select>
+            <div class="alert alert-danger" role="alert"
+                 *ngIf="status.errors && f.submitted">
+              Status je obavezan!
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger light" id="closeGoModal" data-bs-dismiss="modal">Zatvori</button>
+          <button type="submit" class="btn btn-primary">Promeni</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

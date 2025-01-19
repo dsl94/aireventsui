@@ -1,0 +1,35 @@
+<div class="card" style="width: 18rem;">
+  <!-- Product Image -->
+  <img src="{{item?.image}}" class="card-img-top" alt="Product Image" style="height: 200px; object-fit: cover;">
+
+  <!-- Product Details -->
+  <div class="card-body">
+    <!-- Price -->
+    <h5 class="card-title">{{item?.price}}</h5>
+
+    <!-- Gender Selection -->
+    <div class="mb-3">
+      <label for="genderSelect" class="form-label">Pol</label>
+      <select class="form-select" id="genderSelect" [(ngModel)]="selectedGender">
+        <option *ngFor="let gender of genders" value="{{gender}}">{{ gender }}</option>
+      </select>
+    </div>
+
+    <!-- Size Selection -->
+    <div class="mb-3">
+      <label for="sizeSelect" class="form-label">Veličina</label>
+      <select class="form-select" id="sizeSelect" [(ngModel)]="selectedSize">
+        <option *ngFor="let size of sizes" value="{{size}}">{{ size }}</option>
+      </select>
+    </div>
+
+    <!-- Quantity -->
+    <div class="mb-3">
+      <label for="quantityInput" class="form-label">Količina</label>
+      <input type="number" class="form-control" id="quantityInput" value="1" min="1" [(ngModel)]="quantity">
+    </div>
+
+    <!-- Order Button -->
+    <button type="button" (click)="order()" class="btn btn-primary w-100">Naruči</button>
+  </div>
+</div>

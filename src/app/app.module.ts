@@ -55,6 +55,10 @@ import { EventModalComponent } from './components/event-modal/event-modal.compon
 import { EventDetailsComponent } from './components/event-details/event-details.component';
 import { EventGoModalComponent } from './components/event-go-modal/event-go-modal.component';
 import { ChangeDistanceModalComponent } from './components/change-distance-modal/change-distance-modal.component';
+import { ShopComponent } from './pages/shop/shop.component';
+import { ShopItemComponent } from './components/shop-item/shop-item.component';
+import { ShopModalComponent } from './components/shop-modal/shop-modal.component';
+import { OrderModalComponent } from './components/order-modal/order-modal.component';
 
 const routes: Routes = [
   // osnovne rute
@@ -116,6 +120,10 @@ const routes: Routes = [
       {
         path: 'event/:id', // child route path
         component: EventDetailsComponent, // child route component that the router renders
+      },
+      {
+        path: 'shop', // child route path
+        component: ShopComponent, // child route component that the router renders
       },
       // {
       //   path: 'aircrafts', // child route path
@@ -209,6 +217,10 @@ const routes: Routes = [
         path: 'event/:id', // child route path
         component: EventDetailsComponent, // child route component that the router renders
       },
+      {
+        path: 'shop', // child route path
+        component: ShopComponent, // child route component that the router renders
+      },
     ],
   },
 ];
@@ -258,6 +270,10 @@ const routes: Routes = [
     EventDetailsComponent,
     EventGoModalComponent,
     ChangeDistanceModalComponent,
+    ShopComponent,
+    ShopItemComponent,
+    ShopModalComponent,
+    OrderModalComponent,
   ],
   imports: [
     BrowserModule,

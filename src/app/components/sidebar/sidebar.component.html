@@ -93,6 +93,14 @@
         <i class="fa fa-file"></i>
         <span class="nav-text">Izveštaji sa trka</span>
       </a>
+      <li *ngIf="rawRole=='ROLE_SYSTEM_ADMIN'" routerLinkActive="active"><a [routerLink]="['/admin/shop']" aria-expanded="false">
+        <i class="fa fa-shopping-cart"></i>
+        <span class="nav-text">Prodavnica</span>
+      </a>
+      <li *ngIf="rawRole=='ROLE_USER'" routerLinkActive="active"><a [routerLink]="['/user/shop']" aria-expanded="false">
+        <i class="fa fa-shopping-cart"></i>
+        <span class="nav-text">Prodavnica</span>
+      </a>
       </li>
       <li *ngIf="role=='Super admin'" routerLinkActive="active"><a [routerLink]="['/admin/users']" aria-expanded="false">
         <i class="fa fa-users"></i>

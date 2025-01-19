@@ -1,0 +1,64 @@
+<div class="modal fade" id="shop-modal">
+  <div class="modal-dialog" role="document">
+    <form class="user" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Kreiranje nove stavke</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal">
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label class="mb-1"><strong>Naziv <app-ms></app-ms></strong></label>
+            <input type="text" class="form-control" name="title"
+                   [(ngModel)]="form.title" required #title="ngModel">
+            <div class="alert alert-danger" role="alert"
+                 *ngIf="title.errors && f.submitted">
+              Naziv je obavezan!
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="mb-1"><strong>Dostupni polovi - odvojeno zarezom <app-ms></app-ms></strong></label>
+            <input type="text" class="form-control" name="availableGenders"
+                   [(ngModel)]="form.availableGenders" required #availableGenders="ngModel">
+            <div class="alert alert-danger" role="alert"
+                 *ngIf="availableGenders.errors && f.submitted">
+              Polovi su obavezni
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="mb-1"><strong>Dostupne veličine - odvojeno zarezom <app-ms></app-ms></strong></label>
+            <input type="text" class="form-control" name="availableSizes"
+                   [(ngModel)]="form.availableSizes" required #availableSizes="ngModel">
+            <div class="alert alert-danger" role="alert"
+                 *ngIf="availableSizes.errors && f.submitted">
+              Velicine su obavezne
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="mb-1"><strong>Link do slike <app-ms></app-ms></strong></label>
+            <input type="text" class="form-control" name="image"
+                   [(ngModel)]="form.image" required #image="ngModel">
+            <div class="alert alert-danger" role="alert"
+                 *ngIf="image.errors && f.submitted">
+              Slika je obavezna
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="mb-1"><strong>Cena <app-ms></app-ms></strong></label>
+            <input type="number" class="form-control" name="price"
+                   [(ngModel)]="form.price" required #price="ngModel">
+            <div class="alert alert-danger" role="alert"
+                 *ngIf="price.errors && f.submitted">
+              Cena je obavezna
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger light" id="closeChallengeModal" data-bs-dismiss="modal">Zatvori</button>
+          <button type="submit" class="btn btn-primary">Kreiraj</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
