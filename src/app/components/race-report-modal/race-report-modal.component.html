@@ -47,9 +47,22 @@
             </div>
           </div>
           <div class="mb-3">
-            <label class="mb-1"><strong>Dodatne informacije </strong></label>
-            <textarea type="text" class="form-control" name="info"
-                      [(ngModel)]="form.info"  #info="ngModel"></textarea>
+            <label class="mb-1"><strong>Generalni plasman </strong></label>
+            <select name="resultGeneral" [(ngModel)]="form.resultGeneral" class="form-control">
+              <option value="Bez rezultata">Bez rezultata</option>
+              <option value="1. Mesto">1. Mesto</option>
+              <option value="2. Mesto">2. Mesto</option>
+              <option value="3. Mesto">3. Mesto</option>
+            </select> <br>
+          </div>
+          <div class="mb-3">
+            <label class="mb-1"><strong>Plasman u kategoriji </strong></label>
+            <select name="resultGroup" [(ngModel)]="form.resultGroup" class="form-control">
+              <option value="Bez rezultata">Bez rezultata</option>
+              <option value="1. Mesto">1. Mesto</option>
+              <option value="2. Mesto">2. Mesto</option>
+              <option value="3. Mesto">3. Mesto</option>
+            </select> <br>
           </div>
         </div>
         <div class="modal-footer">

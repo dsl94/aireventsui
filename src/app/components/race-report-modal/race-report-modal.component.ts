@@ -14,16 +14,28 @@ export class RaceReportModalComponent {
     title: null,
     date: null,
     distance: null,
-    info: null
+    resultGeneral: "Bez rezultata",
+    resultGroup: "Bez rezultata",
   };
   selectedDistance = "-1";
   constructor(private reportService: RaceReportService, private toastr: ToastrService ) {
   }
 
   onSubmit(): void {
-    // const { fullName, email, password, stravaId, membershipUntil } = this.form;
-
-    this.reportService.create(this.form).subscribe(
+    let info = "";
+    if (this.form.resultGroup != null) {
+      info = "Plasman u svojoj kategoriji: " + this.form.resultGroup;
+    }
+    if (this.form.resultGeneral != null) {
+      info += "\nGeneralni plasman: " + this.form.resultGeneral;
+    }
+    let data = {
+      title: this.form.title,
+      date: this.form.date,
+      distance: this.form.distance,
+      info: info
+    }
+    this.reportService.create(data).subscribe(
       data => {
         this.createdEvent.emit();
         this.toastr.success("Izveštaj uspešno kreiran");

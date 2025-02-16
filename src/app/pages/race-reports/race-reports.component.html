@@ -1,9 +1,28 @@
 <app-page-title title="Izveštaji sa trka"></app-page-title>
+
+<!-- Filter Section -->
+<div class="row mb-3">
+  <div class="col-md-4">
+    <label for="fromDate" class="form-label">Od datuma</label>
+    <input type="date" id="fromDate" class="form-control" [(ngModel)]="fromDate">
+  </div>
+  <div class="col-md-4">
+    <label for="toDate" class="form-label">Do datuma</label>
+    <input type="date" id="toDate" class="form-control" [(ngModel)]="toDate">
+  </div>
+  <div class="col-md-4 d-flex align-items-end">
+    <button class="btn btn-primary" (click)="applyFilter()">Filtriraj</button>&nbsp;&nbsp;
+    <button class="btn btn-secondary" (click)="resetFilter()">Poništi filter</button>
+  </div>
+</div>
+
 <div class="row">
   <div class="col-lg-12">
     <div class="card">
       <div class="card-header">
-        <button type="button" data-bs-toggle="modal" data-bs-target="#race-modal" class="btn btn-primary"><span><i class="fas fa-plus-circle"></i></span> Kreiraj izveštaj</button>
+        <button type="button" data-bs-toggle="modal" data-bs-target="#race-modal" class="btn btn-primary">
+          <span><i class="fas fa-plus-circle"></i></span> Kreiraj izveštaj
+        </button>
       </div>
       <div class="card-body">
         <div class="table-responsive">
@@ -20,23 +39,15 @@
             </thead>
             <tbody>
             <tr *ngFor="let report of reports">
+              <td>{{ report.title }}</td>
+              <td *ngIf="isAdmin">{{ report.user.name }}</td>
+              <td>{{ report.date }}</td>
+              <td>{{ report.distance }}</td>
+              <td><pre>{{ report.info }}</pre></td>
               <td>
-                {{report.title}}
-              </td>
-              <td *ngIf="isAdmin">
-                {{report.user.name}}
-              </td>
-              <td>
-                {{report.date}}
-              </td>
-              <td>
-                {{report.distance}}
-              </td>
-              <td>
-                {{report.info}}
-              </td>
-              <td>
-                <button (click)="markForDelete(report.id)" type="button" data-bs-toggle="modal" data-bs-target="#confirm-modal" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></button>
+                <button (click)="markForDelete(report.id)" type="button" data-bs-toggle="modal" data-bs-target="#confirm-modal" class="btn btn-danger shadow btn-xs sharp">
+                  <i class="fa fa-trash"></i>
+                </button>
               </td>
             </tr>
             </tbody>

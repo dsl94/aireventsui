@@ -26,7 +26,11 @@
     <!-- Quantity -->
     <div class="mb-3">
       <label for="quantityInput" class="form-label">Količina</label>
-      <input type="number" class="form-control" id="quantityInput" value="1" min="1" [(ngModel)]="quantity">
+      <select class="form-select" id="quantityInput" [(ngModel)]="quantity">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+      </select>
     </div>
 
     <!-- Order Button -->

@@ -1,9 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {RaceDetails, RaceReportDetails} from "../../dto/race-details.model";
-import {RaceService} from "../../services/race.service";
-import {ToastrService} from "ngx-toastr";
-import {TokenService} from "../../services/token.service";
-import {RaceReportService} from "../../services/race-report.service";
+import { Component, OnInit } from '@angular/core';
+import { RaceReportDetails } from "../../dto/race-details.model";
+import { RaceReportService } from "../../services/race-report.service";
+import { ToastrService } from "ngx-toastr";
+import { TokenService } from "../../services/token.service";
 
 @Component({
   selector: 'app-race-reports',
@@ -11,17 +10,17 @@ import {RaceReportService} from "../../services/race-report.service";
   styleUrls: ['./race-reports.component.css']
 })
 export class RaceReportsComponent implements OnInit {
-  reports: RaceReportDetails[] = []
+  reports: RaceReportDetails[] = [];
   forDelete = -1;
-
   rawRole: string = '';
-
   userId = -1;
-
   isAdmin = false;
 
-  constructor(private reportService: RaceReportService, private toastr: ToastrService, private tokenService: TokenService) {
-  }
+  // Filter values
+  fromDate: string | null = null;
+  toDate: string | null = null;
+
+  constructor(private reportService: RaceReportService, private toastr: ToastrService, private tokenService: TokenService) {}
 
   ngOnInit(): void {
     let roles = this.tokenService.getUser().roles;
@@ -34,13 +33,23 @@ export class RaceReportsComponent implements OnInit {
   }
 
   load() {
-    this.reportService.getAll().subscribe(data => {
+    this.reportService.getAll(this.fromDate, this.toDate).subscribe(data => {
       this.reports = data;
     });
   }
 
+  applyFilter() {
+    this.load();
+  }
+
+  resetFilter() {
+    this.fromDate = null;
+    this.toDate = null;
+    this.load();
+  }
+
   delete() {
-    this.reportService.delete(this.forDelete).subscribe(data => {
+    this.reportService.delete(this.forDelete).subscribe(() => {
       this.load();
       this.toastr.success("Izveštaj izbrisan");
     });

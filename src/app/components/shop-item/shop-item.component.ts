@@ -16,7 +16,7 @@ export class ShopItemComponent implements OnInit {
   genders: string[] = []
   selectedGender = '';
   selectedSize = '';
-  quantity = '';
+  quantity = 1;
 
   constructor(private orderService: OrderService, private toastr: ToastrService) {}
 
