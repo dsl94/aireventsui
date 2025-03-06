@@ -13,6 +13,7 @@ export interface RaceReportDetails {
   distance: string;
   info: string;
   user: UserRace;
+  result: string;
 }
 
 export interface UserRace {
@@ -36,13 +37,15 @@ export class RaceReportRequest {
   title: string;
   date: string;
   distance: string;
+  result: string;
 
   info: string
 
-  constructor(title: string, date: string, distance: string, info: string) {
+  constructor(title: string, date: string, distance: string, info: string, result: string) {
     this.title = title;
     this.date = date;
     this.distance = distance;
     this.info = info;
+    this.result = result;
   }
 }

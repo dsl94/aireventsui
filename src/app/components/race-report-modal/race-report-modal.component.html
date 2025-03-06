@@ -64,6 +64,11 @@
               <option value="3. Mesto">3. Mesto</option>
             </select> <br>
           </div>
+          <div class="mb-3">
+            <label class="mb-1"><strong>Vremenski rezultat </strong></label>
+            <input type="text" class="form-control" name="result" (input)="formatRaceTime($event)" placeholder="HH:MM:SS"
+                   [(ngModel)]="raceTime" #result="ngModel">
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger light" id="closeRaceModal" data-bs-dismiss="modal">Zatvori</button>

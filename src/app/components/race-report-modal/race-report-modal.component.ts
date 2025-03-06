@@ -17,6 +17,7 @@ export class RaceReportModalComponent {
     resultGeneral: "Bez rezultata",
     resultGroup: "Bez rezultata",
   };
+  raceTime: string = '';
   selectedDistance = "-1";
   constructor(private reportService: RaceReportService, private toastr: ToastrService ) {
   }
@@ -33,7 +34,8 @@ export class RaceReportModalComponent {
       title: this.form.title,
       date: this.form.date,
       distance: this.form.distance,
-      info: info
+      info: info,
+      result: this.raceTime
     }
     this.reportService.create(data).subscribe(
       data => {
@@ -46,6 +48,23 @@ export class RaceReportModalComponent {
         this.toastr.error(err.error.message);
       }
     );
+  }
+
+  formatRaceTime(event: any) {
+    let value = event.target.value.replace(/[^0-9]/g, ''); // Remove non-numeric characters
+    let formattedValue = '';
+
+    if (value.length > 0) {
+      formattedValue += value.substring(0, 2); // HH
+    }
+    if (value.length > 2) {
+      formattedValue += ':' + value.substring(2, 4); // MM
+    }
+    if (value.length > 4) {
+      formattedValue += ':' + value.substring(4, 6); // SS
+    }
+
+    this.raceTime = formattedValue;
   }
 
   changeDistance() {

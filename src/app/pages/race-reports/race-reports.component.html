@@ -33,6 +33,7 @@
               <th *ngIf="isAdmin">Član</th>
               <th>Datum</th>
               <th>Distanca</th>
+              <th>Vremenski rezultat</th>
               <th>Dodatne informacije</th>
               <th></th>
             </tr>
@@ -43,9 +44,10 @@
               <td *ngIf="isAdmin">{{ report.user.name }}</td>
               <td>{{ report.date }}</td>
               <td>{{ report.distance }}</td>
+              <td>{{ report.result }}</td>
               <td><pre>{{ report.info }}</pre></td>
               <td>
-                <button (click)="markForDelete(report.id)" type="button" data-bs-toggle="modal" data-bs-target="#confirm-modal" class="btn btn-danger shadow btn-xs sharp">
+                <button *ngIf="canDelete(report)" (click)="markForDelete(report.id)" type="button" data-bs-toggle="modal" data-bs-target="#confirm-modal" class="btn btn-danger shadow btn-xs sharp">
                   <i class="fa fa-trash"></i>
                 </button>
               </td>

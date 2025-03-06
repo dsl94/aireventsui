@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RaceReportDetails } from "../../dto/race-details.model";
+import {RaceReportDetails, UserRace} from "../../dto/race-details.model";
 import { RaceReportService } from "../../services/race-report.service";
 import { ToastrService } from "ngx-toastr";
 import { TokenService } from "../../services/token.service";
@@ -57,5 +57,12 @@ export class RaceReportsComponent implements OnInit {
 
   markForDelete(id: number) {
     this.forDelete = id;
+  }
+
+  canDelete(report: RaceReportDetails) {
+    if (this.isAdmin) {
+      return true;
+    }
+    return report.user.id === this.userId;
   }
 }
