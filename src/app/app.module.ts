@@ -59,6 +59,8 @@ import { ShopComponent } from './pages/shop/shop.component';
 import { ShopItemComponent } from './components/shop-item/shop-item.component';
 import { ShopModalComponent } from './components/shop-modal/shop-modal.component';
 import { OrderModalComponent } from './components/order-modal/order-modal.component';
+import { AiPlanComponent } from './pages/ai-plan/ai-plan.component';
+import { PlanModalComponent } from './components/plan-modal/plan-modal.component';
 
 const routes: Routes = [
   // osnovne rute
@@ -124,6 +126,10 @@ const routes: Routes = [
       {
         path: 'shop', // child route path
         component: ShopComponent, // child route component that the router renders
+      },
+      {
+        path: 'trener', // child route path
+        component: AiPlanComponent, // child route component that the router renders
       },
       // {
       //   path: 'aircrafts', // child route path
@@ -221,6 +227,10 @@ const routes: Routes = [
         path: 'shop', // child route path
         component: ShopComponent, // child route component that the router renders
       },
+      {
+        path: 'trener', // child route path
+        component: AiPlanComponent, // child route component that the router renders
+      },
     ],
   },
 ];
@@ -274,6 +284,8 @@ const routes: Routes = [
     ShopItemComponent,
     ShopModalComponent,
     OrderModalComponent,
+    AiPlanComponent,
+    PlanModalComponent,
   ],
   imports: [
     BrowserModule,

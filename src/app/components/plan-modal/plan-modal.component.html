@@ -1,0 +1,88 @@
+<div class="modal fade" id="planModal">
+  <div class="modal-dialog" role="document">
+    <form class="user" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Generisanje trening plana</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+
+          <div class="mb-3">
+            <label class="mb-1"><strong>Pol</strong></label>
+            <select class="form-control" name="gender" [(ngModel)]="form.gender" required #gender="ngModel">
+              <option value="Male">Muški</option>
+              <option value="Female">Ženski</option>
+            </select>
+            <div class="alert alert-danger" *ngIf="gender.errors && f.submitted">Pol je obavezan</div>
+          </div>
+
+          <div class="mb-3">
+            <label class="mb-1"><strong>Godine</strong></label>
+            <input type="number" class="form-control" name="age" [(ngModel)]="form.age" required #age="ngModel">
+            <div class="alert alert-danger" *ngIf="age.errors && f.submitted">Godine su obavezne</div>
+          </div>
+
+          <div class="mb-3">
+            <label class="mb-1"><strong>Težina (kg)</strong></label>
+            <input type="number" class="form-control" name="weight" [(ngModel)]="form.weight" required #weight="ngModel">
+            <div class="alert alert-danger" *ngIf="weight.errors && f.submitted">Težina je obavezna</div>
+          </div>
+
+          <div class="mb-3">
+            <label class="mb-1"><strong>Najduža trka (km)</strong></label>
+            <input type="number" class="form-control" name="longestRun" [(ngModel)]="form.longestRun" required #longestRun="ngModel">
+            <div class="alert alert-danger" *ngIf="longestRun.errors && f.submitted">Najduža trka je obavezna</div>
+          </div>
+
+          <div class="mb-3">
+            <label class="mb-1"><strong>Prosečan tempo (min/km)</strong></label>
+            <input type="text" class="form-control" name="avgPace" [(ngModel)]="form.avgPace" required #avgPace="ngModel">
+            <div class="alert alert-danger" *ngIf="avgPace.errors && f.submitted">Tempo je obavezan</div>
+          </div>
+
+          <div class="mb-3">
+            <label class="mb-1"><strong>Ciljna trka</strong></label>
+            <select class="form-control" name="targetRace" [(ngModel)]="form.targetRace" required #targetRace="ngModel">
+              <option value="5K">5K</option>
+              <option value="10K">10K</option>
+              <option value="Half Marathon">Polumaraton</option>
+              <option value="Marathon">Maraton</option>
+            </select>
+            <div class="alert alert-danger" *ngIf="targetRace.errors && f.submitted">Trka je obavezna</div>
+          </div>
+
+          <div class="mb-3">
+            <label class="mb-1"><strong>Ciljno vreme (hh:mm:ss)</strong></label>
+            <input type="text" class="form-control" name="goalTime" [(ngModel)]="form.goalTime" required #goalTime="ngModel">
+            <div class="alert alert-danger" *ngIf="goalTime.errors && f.submitted">Ciljno vreme je obavezno</div>
+          </div>
+
+          <div class="mb-3">
+            <label class="mb-1"><strong>Broj treninga nedeljno</strong></label>
+            <input type="number" class="form-control" name="runsPerWeek" [(ngModel)]="form.runsPerWeek" required #runsPerWeek="ngModel">
+            <div class="alert alert-danger" *ngIf="runsPerWeek.errors && f.submitted">Unesite broj treninga</div>
+          </div>
+
+          <div class="mb-3">
+            <label class="mb-1"><strong>Nedelja do trke</strong></label>
+            <input type="number" class="form-control" name="weeksToPrepare" [(ngModel)]="form.weeksToPrepare" required #weeksToPrepare="ngModel">
+            <div class="alert alert-danger" *ngIf="weeksToPrepare.errors && f.submitted">Unesite broj nedelja</div>
+          </div>
+
+          <div class="mb-3">
+            <label class="mb-1"><strong>Trenutna prosečna nedeljna kilometraža</strong></label>
+            <input type="number" class="form-control" name="currentWeeklyMileage" [(ngModel)]="form.currentWeeklyMileage" required #currentWeeklyMileage="ngModel">
+            <div class="alert alert-danger" *ngIf="currentWeeklyMileage.errors && f.submitted">Kilometraža je obavezna</div>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger light"  id="closePlanModal" data-bs-dismiss="modal">Zatvori</button>
+          <button type="submit"  *ngIf="!loading" class="btn btn-primary">Generiši plan</button>
+          <span *ngIf="loading"><i class="fa fa-spinner fa-spin"></i> Generisanje...</span>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

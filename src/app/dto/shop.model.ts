@@ -41,3 +41,6 @@ export interface User {
 
 }
 
+export interface PlanResponse {
+  plan: string;
+}

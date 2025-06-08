@@ -71,6 +71,10 @@
         <i class="fa fa-flag-checkered"></i>
         <span class="nav-text">Trke</span>
       </a>
+      <li *ngIf="rawRole=='ROLE_USER'" routerLinkActive="active"><a [routerLink]="['/user/trener']" aria-expanded="false">
+        <i class="fa fa-bolt"></i>
+        <span class="nav-text">AI Trener</span>
+      </a>
       <li *ngIf="rawRole=='ROLE_USER'" routerLinkActive="active"><a [routerLink]="['/user/challenges']" aria-expanded="false">
         <i class="fa fa-star"></i>
         <span class="nav-text">Izazovi</span>
@@ -96,6 +100,10 @@
       <li *ngIf="rawRole=='ROLE_SYSTEM_ADMIN'" routerLinkActive="active"><a [routerLink]="['/admin/shop']" aria-expanded="false">
         <i class="fa fa-shopping-cart"></i>
         <span class="nav-text">Prodavnica</span>
+      </a>
+      <li *ngIf="rawRole=='ROLE_SYSTEM_ADMIN'" routerLinkActive="active"><a [routerLink]="['/admin/trener']" aria-expanded="false">
+        <i class="fa fa-bolt"></i>
+        <span class="nav-text">AI Trener</span>
       </a>
       <li *ngIf="rawRole=='ROLE_USER'" routerLinkActive="active"><a [routerLink]="['/user/shop']" aria-expanded="false">
         <i class="fa fa-shopping-cart"></i>
