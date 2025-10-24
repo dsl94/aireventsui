@@ -43,4 +43,8 @@ export class EventService {
   changeDistance(id: number, distance: number) {
     return this.http.post(this.baseUrl + '/event/' + id + '/distance/' + distance, null);
   }
+
+  getPublicEvent(eventId: number) {
+    return this.http.get<any[]>(this.baseUrl + '/event/public/event/' + eventId);
+  }
 }

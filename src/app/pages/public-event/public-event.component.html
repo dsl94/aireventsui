@@ -1,0 +1,37 @@
+<div class="public-event-container">
+  <div *ngIf="loading" class="loading">
+    <div class="spinner"></div>
+    Loading...
+  </div>
+
+  <div *ngIf="error && !loading" class="error-message">
+    Error loading event data. Please try again later.
+  </div>
+
+  <div *ngIf="!loading && !error" class="table-wrapper">
+    <table class="event-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Distance (km)</th>
+          <th>Paid</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let participant of participants; let i = index" [class.even-row]="i % 2 === 0">
+          <td class="name-cell">{{ participant.name }}</td>
+          <td class="distance-cell">{{ participant.distance }} km</td>
+          <td class="paid-cell">
+            <span class="status-icon" [class.paid]="participant.paid" [class.unpaid]="!participant.paid">
+              {{ participant.paid ? '✓' : '✗' }}
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div *ngIf="participants.length === 0" class="no-data">
+      No participants found for this event.
+    </div>
+  </div>
+</div>

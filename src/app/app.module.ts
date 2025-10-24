@@ -50,6 +50,7 @@ import { AdminGuestsTableComponent } from './components/admin-guests-table/admin
 import { ConvertGuestModalComponent } from './components/convert-guest-modal/convert-guest-modal.component';
 import {DataTablesModule} from "angular-datatables";
 import { PublicChallengeComponent } from './pages/public-challenge/public-challenge.component';
+import { PublicEventComponent } from './pages/public-event/public-event.component';
 import { EventsComponent } from './pages/events/events.component';
 import { EventModalComponent } from './components/event-modal/event-modal.component';
 import { EventDetailsComponent } from './components/event-details/event-details.component';
@@ -69,6 +70,8 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'letnji-izazov', component: PublicChallengeComponent },
   { path: 'zimski-izazov', component: PublicChallengeComponent },
+  { path: 'public-event/:id', component: PublicEventComponent },
+  { path: 'public-event', component: PublicEventComponent },
   {
     path: 'admin',
     component: IndexComponent,
@@ -275,6 +278,7 @@ const routes: Routes = [
     AdminGuestsTableComponent,
     ConvertGuestModalComponent,
     PublicChallengeComponent,
+    PublicEventComponent,
     EventsComponent,
     EventModalComponent,
     EventDetailsComponent,
