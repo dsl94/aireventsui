@@ -5,16 +5,16 @@
   </div>
 
   <div *ngIf="error && !loading" class="error-message">
-    Error loading event data. Please try again later.
+    Problem sa učitavanjem podataka, pokušajte kasnije....
   </div>
 
   <div *ngIf="!loading && !error" class="table-wrapper">
     <table class="event-table">
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Distance (km)</th>
-          <th>Paid</th>
+          <th>Ime i prezime</th>
+          <th>Distanca (km)</th>
+          <th>Plaćeno</th>
         </tr>
       </thead>
       <tbody>
