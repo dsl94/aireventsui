@@ -63,7 +63,8 @@
                     <span class="badge badge-{{user.paid ? 'success' : 'danger'}}">{{user.paid ? 'DA' : 'NE'}}</span>
                   </td>
                   <td>
-                    <button *ngIf="isAdmin && !user.paid" (click)="pay(user.eventId)" type="button" class="btn btn-success shadow btn-xs sharp"><i class="fas fa-money-bill"></i></button>
+                    <button *ngIf="isAdmin && !user.paid" (click)="pay(user.eventId)" type="button" class="btn btn-success shadow btn-xs sharp"><i class="fas fa-money-bill"></i></button>&nbsp;
+                    <button *ngIf="isAdmin" (click)="removeUser(event.id, user.id)" type="button" class="btn btn-danger shadow btn-xs sharp"><i class="fas fa-user-times"></i></button>&nbsp;
                     <button *ngIf="loggedInUserId == user.id" (click)="selectId(user.eventId)" type="button" data-bs-toggle="modal" data-bs-target="#event-change-modal" class="btn btn-warning shadow btn-xs sharp"><i class="fas fa-pen"></i></button>
                   </td>
                 </tr>

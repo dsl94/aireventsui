@@ -33,7 +33,7 @@ export class PublicChallengeComponent implements OnInit {
     }
 
     if (this.router.url.includes('zimski')) {
-      this.id = 412;
+      this.id = 955;
     }
     this.load();
   }

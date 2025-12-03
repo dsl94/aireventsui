@@ -73,4 +73,14 @@ export class EventDetailsComponent implements OnInit {
   selectId(id: number) {
     this.selectedId = id;
   }
+
+  removeUser(eventId: number, userId: number) {
+    this.eventService.removeUser(eventId, userId)
+      .subscribe(data => {
+        this.load();
+        this.toasts.success("Korisnik je uklonjen sa događaja");
+      }, error => {
+        this.toasts.error("Nije moguće ukloniti korisnika");
+      });
+  }
 }

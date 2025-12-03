@@ -47,4 +47,8 @@ export class EventService {
   getPublicEvent(eventId: number) {
     return this.http.get<any[]>(this.baseUrl + '/event/public/event/' + eventId);
   }
+
+  removeUser(eventId: number, userId: number) {
+    return this.http.delete(this.baseUrl + '/event/' + eventId + '/remove-user/' + userId);
+  }
 }
