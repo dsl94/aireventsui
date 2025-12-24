@@ -71,6 +71,9 @@ export class EventsComponent implements OnInit{
         display = false;
       }
     });
+    if ( !race.active) {
+      display = false;
+    }
     return display;
   }
 

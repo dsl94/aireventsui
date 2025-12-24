@@ -2,6 +2,7 @@ export interface EventDetails {
   id: number;
   title: string;
   startDate: string;
+  active: boolean
   users: UserEvent[];
 }
 

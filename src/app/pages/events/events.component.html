@@ -30,7 +30,7 @@
               </td>
               <td>
                 <button *ngIf="displayGo(event)" (click)="markForGoing(event.id)" type="button" data-bs-toggle="modal" data-bs-target="#event-go-modal" class="btn btn-success shadow btn-xs sharp"><i class="fas fa-plus"></i></button>
-                <button *ngIf="!displayGo(event)" type="button" class="btn btn-warning shadow btn-xs sharp"><i class="fas fa-minus"></i></button>&nbsp;
+                <button *ngIf="event.active && !displayGo(event)" type="button" class="btn btn-warning shadow btn-xs sharp"><i class="fas fa-minus"></i></button>&nbsp;
                 <a *ngIf="isAdmin" [routerLink]="['/admin/event/', event.id]" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-pencil-alt"></i></a>
                 <a *ngIf="!isAdmin && !isGuest" [routerLink]="['/user/event/', event.id]" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-eye"></i></a>
                 <a *ngIf="isGuest" [routerLink]="['/guest/event/', event.id]" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-eye"></i></a>
