@@ -16,7 +16,7 @@ export class PublicChallengeComponent implements OnInit {
   maleUsers: UserChallenge[] = []
   femaleUsers: UserChallenge[] = []
   filter = null;
-  id = 754;
+  id = 1392;
 
   constructor(private challengeService: ChallengeService, private activatedRoute: ActivatedRoute,
               private router: Router) {
